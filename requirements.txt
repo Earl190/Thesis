@@ -1,0 +1,14 @@
+streamlit
+pandas
+scikit-learn
+pandas
+numpy
+plotly.express
+datetime
+streamlit_autorefresh
+db_connection
+pyodbc
+datetime
+sqlalchemy
+urllib.parse
+statsmodels.tsa.holtwinters

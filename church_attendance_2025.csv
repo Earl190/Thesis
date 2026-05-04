@@ -1,0 +1,440 @@
+date,mass_time,attendance,foot_traffic_count,capacity,event_type,weather_condition,holiday_flag,special_event_notes,day_of_week,month,quarter,attendance_rate,low_attendance_alert
+2025-01-01,08:00,395,399,600,Holiday Mass,Sunny,1,New Year Mass,Wednesday,1,Q1,0.658,0
+2025-01-01,17:00,324,349,550,Holiday Mass,Sunny,1,New Year Mass,Wednesday,1,Q1,0.589,0
+2025-01-02,06:00,84,104,550,Regular Mass,Sunny,0,,Thursday,1,Q1,0.153,1
+2025-01-04,17:00,40,60,550,Regular Mass,Sunny,0,Unexpected local disruption,Saturday,1,Q1,0.073,1
+2025-01-05,06:00,171,175,550,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.311,1
+2025-01-05,08:00,296,306,600,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.493,0
+2025-01-05,10:00,338,367,600,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.563,0
+2025-01-05,17:00,241,262,550,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.438,0
+2025-01-07,17:00,113,131,550,Novena,Rainy,0,,Tuesday,1,Q1,0.205,1
+2025-01-09,06:00,64,64,550,Regular Mass,Rainy,0,,Thursday,1,Q1,0.116,1
+2025-01-11,10:00,161,177,550,Youth Mass,Cloudy,0,,Saturday,1,Q1,0.293,0
+2025-01-11,17:00,98,98,550,Regular Mass,Cloudy,0,,Saturday,1,Q1,0.178,1
+2025-01-12,06:00,189,220,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.344,1
+2025-01-12,08:00,297,300,600,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.495,0
+2025-01-12,10:00,353,374,600,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.588,0
+2025-01-12,17:00,224,237,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.407,0
+2025-01-14,17:00,133,139,550,Novena,Sunny,0,,Tuesday,1,Q1,0.242,1
+2025-01-16,06:00,74,86,550,Regular Mass,Rainy,0,,Thursday,1,Q1,0.135,1
+2025-01-18,17:00,114,114,550,Regular Mass,Sunny,0,,Saturday,1,Q1,0.207,1
+2025-01-19,06:00,230,254,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.418,0
+2025-01-19,08:00,283,305,600,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.472,0
+2025-01-19,10:00,330,368,600,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.55,0
+2025-01-19,17:00,221,239,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.402,0
+2025-01-21,17:00,101,101,550,Novena,Rainy,0,,Tuesday,1,Q1,0.184,1
+2025-01-23,06:00,87,89,550,Regular Mass,Cloudy,0,,Thursday,1,Q1,0.158,1
+2025-01-25,09:00,57,57,550,Funeral,Cloudy,0,Unexpected local disruption,Saturday,1,Q1,0.104,0
+2025-01-25,10:00,136,136,550,Youth Mass,Cloudy,0,,Saturday,1,Q1,0.247,0
+2025-01-25,17:00,105,105,550,Regular Mass,Cloudy,0,,Saturday,1,Q1,0.191,1
+2025-01-26,06:00,216,234,550,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.393,0
+2025-01-26,08:00,288,323,600,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.48,0
+2025-01-26,10:00,355,365,600,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.592,0
+2025-01-26,17:00,240,242,550,Sunday Mass,Sunny,0,,Sunday,1,Q1,0.436,0
+2025-01-28,17:00,91,111,550,Novena,Rainy,0,,Tuesday,1,Q1,0.165,1
+2025-01-30,06:00,100,108,550,Regular Mass,Sunny,0,,Thursday,1,Q1,0.182,1
+2025-02-01,15:00,161,167,550,Parish Event,Sunny,0,,Saturday,2,Q1,0.293,0
+2025-02-01,17:00,115,115,550,Regular Mass,Sunny,0,,Saturday,2,Q1,0.209,1
+2025-02-02,06:00,187,187,550,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.34,1
+2025-02-02,08:00,282,312,600,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.47,0
+2025-02-02,10:00,329,348,600,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.548,0
+2025-02-02,17:00,259,269,550,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.471,0
+2025-02-04,17:00,117,118,550,Novena,Cloudy,0,,Tuesday,2,Q1,0.213,1
+2025-02-05,13:00,82,84,550,Funeral,Cloudy,0,,Wednesday,2,Q1,0.149,0
+2025-02-06,06:00,72,85,550,Regular Mass,Sunny,0,,Thursday,2,Q1,0.131,1
+2025-02-08,10:00,150,150,550,Youth Mass,Cloudy,0,,Saturday,2,Q1,0.273,0
+2025-02-08,17:00,89,100,550,Regular Mass,Cloudy,0,,Saturday,2,Q1,0.162,1
+2025-02-09,06:00,201,216,550,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.365,0
+2025-02-09,08:00,264,272,600,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.44,0
+2025-02-09,10:00,323,340,600,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.538,0
+2025-02-09,17:00,224,248,550,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.407,0
+2025-02-11,17:00,106,124,550,Novena,Cloudy,0,,Tuesday,2,Q1,0.193,1
+2025-02-13,06:00,69,69,550,Regular Mass,Sunny,0,,Thursday,2,Q1,0.125,1
+2025-02-14,08:00,353,383,600,Holiday Mass,Cloudy,1,Ash Wednesday/Valentine Season,Friday,2,Q1,0.588,0
+2025-02-14,17:00,275,296,550,Holiday Mass,Cloudy,1,Ash Wednesday/Valentine Season,Friday,2,Q1,0.5,0
+2025-02-15,17:00,72,88,550,Regular Mass,Stormy,0,,Saturday,2,Q1,0.131,1
+2025-02-16,06:00,188,200,550,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.342,1
+2025-02-16,08:00,249,258,600,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.415,0
+2025-02-16,10:00,290,309,600,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.483,0
+2025-02-16,17:00,201,211,550,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.365,0
+2025-02-18,17:00,132,145,550,Novena,Sunny,0,,Tuesday,2,Q1,0.24,1
+2025-02-20,06:00,82,92,550,Regular Mass,Sunny,0,,Thursday,2,Q1,0.149,1
+2025-02-22,10:00,166,166,550,Youth Mass,Sunny,0,,Saturday,2,Q1,0.302,0
+2025-02-22,15:00,174,184,550,Parish Event,Sunny,0,,Saturday,2,Q1,0.316,0
+2025-02-22,17:00,105,110,550,Regular Mass,Sunny,0,,Saturday,2,Q1,0.191,1
+2025-02-23,06:00,163,179,550,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.296,1
+2025-02-23,08:00,246,269,600,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.41,0
+2025-02-23,10:00,298,298,600,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.497,0
+2025-02-23,17:00,219,241,550,Sunday Mass,Rainy,0,,Sunday,2,Q1,0.398,0
+2025-02-25,17:00,109,110,550,Novena,Cloudy,0,,Tuesday,2,Q1,0.198,1
+2025-02-27,06:00,84,101,550,Regular Mass,Sunny,0,,Thursday,2,Q1,0.153,1
+2025-03-01,17:00,107,126,550,Regular Mass,Cloudy,0,,Saturday,3,Q1,0.195,1
+2025-03-02,06:00,139,142,550,Sunday Mass,Stormy,0,,Sunday,3,Q1,0.253,1
+2025-03-02,08:00,193,200,600,Sunday Mass,Stormy,0,,Sunday,3,Q1,0.322,1
+2025-03-02,10:00,223,233,600,Sunday Mass,Stormy,0,,Sunday,3,Q1,0.372,0
+2025-03-02,17:00,162,185,550,Sunday Mass,Stormy,0,,Sunday,3,Q1,0.295,1
+2025-03-04,17:00,115,115,550,Novena,Sunny,0,,Tuesday,3,Q1,0.209,1
+2025-03-06,06:00,97,108,550,Regular Mass,Sunny,0,,Thursday,3,Q1,0.176,1
+2025-03-08,10:00,159,159,550,Youth Mass,Cloudy,0,,Saturday,3,Q1,0.289,0
+2025-03-08,17:00,111,112,550,Regular Mass,Cloudy,0,,Saturday,3,Q1,0.202,1
+2025-03-09,06:00,205,230,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.373,0
+2025-03-09,08:00,303,329,600,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.505,0
+2025-03-09,10:00,333,352,600,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.555,0
+2025-03-09,17:00,244,280,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.444,0
+2025-03-11,17:00,80,85,550,Novena,Stormy,0,,Tuesday,3,Q1,0.145,1
+2025-03-13,06:00,82,82,550,Regular Mass,Sunny,0,,Thursday,3,Q1,0.149,1
+2025-03-15,17:00,115,125,550,Regular Mass,Sunny,0,,Saturday,3,Q1,0.209,1
+2025-03-16,06:00,197,201,550,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.358,0
+2025-03-16,08:00,297,332,600,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.495,0
+2025-03-16,10:00,353,393,600,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.588,0
+2025-03-16,17:00,251,258,550,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.456,0
+2025-03-18,17:00,108,125,550,Novena,Cloudy,0,,Tuesday,3,Q1,0.196,1
+2025-03-20,06:00,67,72,550,Regular Mass,Stormy,0,,Thursday,3,Q1,0.122,1
+2025-03-22,10:00,132,157,550,Youth Mass,Rainy,0,,Saturday,3,Q1,0.24,0
+2025-03-22,17:00,82,94,550,Regular Mass,Rainy,0,,Saturday,3,Q1,0.149,1
+2025-03-23,06:00,218,246,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.396,0
+2025-03-23,08:00,307,330,600,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.512,0
+2025-03-23,10:00,352,376,600,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.587,0
+2025-03-23,17:00,239,247,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.435,0
+2025-03-25,17:00,126,145,550,Novena,Sunny,0,,Tuesday,3,Q1,0.229,1
+2025-03-27,06:00,82,94,550,Regular Mass,Cloudy,0,,Thursday,3,Q1,0.149,1
+2025-03-29,08:00,366,384,600,Holiday Mass,Rainy,1,Holy Week,Saturday,3,Q1,0.61,0
+2025-03-29,17:00,305,322,550,Holiday Mass,Rainy,1,Holy Week,Saturday,3,Q1,0.555,0
+2025-03-29,17:00,131,131,550,Regular Mass,Rainy,1,Holy Week,Saturday,3,Q1,0.238,1
+2025-03-30,06:00,198,220,550,Sunday Mass,Rainy,0,,Sunday,3,Q1,0.36,0
+2025-03-30,08:00,259,281,600,Sunday Mass,Rainy,0,,Sunday,3,Q1,0.432,0
+2025-03-30,10:00,294,327,600,Sunday Mass,Rainy,0,,Sunday,3,Q1,0.49,0
+2025-03-30,13:00,79,79,550,Funeral,Rainy,0,,Sunday,3,Q1,0.144,0
+2025-03-30,17:00,225,262,550,Sunday Mass,Rainy,0,,Sunday,3,Q1,0.409,0
+2025-03-31,08:00,419,459,600,Holiday Mass,Rainy,1,Easter Sunday,Monday,3,Q1,0.698,0
+2025-03-31,17:00,389,431,550,Holiday Mass,Rainy,1,Easter Sunday,Monday,3,Q1,0.707,0
+2025-04-01,17:00,130,142,550,Novena,Sunny,0,,Tuesday,4,Q2,0.236,1
+2025-04-02,09:00,98,98,550,Funeral,Rainy,0,,Wednesday,4,Q2,0.178,0
+2025-04-03,06:00,70,84,550,Regular Mass,Rainy,0,,Thursday,4,Q2,0.127,1
+2025-04-05,17:00,76,96,550,Regular Mass,Stormy,0,,Saturday,4,Q2,0.138,1
+2025-04-06,06:00,199,204,550,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.362,0
+2025-04-06,08:00,264,269,600,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.44,0
+2025-04-06,10:00,318,337,600,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.53,0
+2025-04-06,17:00,222,237,550,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.404,0
+2025-04-08,17:00,109,116,550,Novena,Cloudy,0,,Tuesday,4,Q2,0.198,1
+2025-04-10,06:00,88,88,550,Regular Mass,Sunny,0,,Thursday,4,Q2,0.16,1
+2025-04-12,10:00,158,174,550,Youth Mass,Cloudy,0,,Saturday,4,Q2,0.287,0
+2025-04-12,17:00,114,123,550,Regular Mass,Cloudy,0,,Saturday,4,Q2,0.207,1
+2025-04-13,06:00,229,245,550,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.416,0
+2025-04-13,08:00,301,335,600,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.502,0
+2025-04-13,10:00,206,223,600,Sunday Mass,Cloudy,0,Unexpected local disruption,Sunday,4,Q2,0.343,1
+2025-04-13,17:00,249,261,550,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.453,0
+2025-04-15,17:00,121,123,550,Novena,Rainy,0,,Tuesday,4,Q2,0.22,1
+2025-04-17,06:00,90,94,550,Regular Mass,Sunny,0,,Thursday,4,Q2,0.164,1
+2025-04-19,17:00,71,71,550,Regular Mass,Sunny,0,Unexpected local disruption,Saturday,4,Q2,0.129,1
+2025-04-20,06:00,214,238,550,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.389,0
+2025-04-20,08:00,309,318,600,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.515,0
+2025-04-20,10:00,355,377,600,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.592,0
+2025-04-20,17:00,256,271,550,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.465,0
+2025-04-22,17:00,133,153,550,Novena,Sunny,0,,Tuesday,4,Q2,0.242,1
+2025-04-24,06:00,51,59,550,Regular Mass,Stormy,0,,Thursday,4,Q2,0.093,1
+2025-04-26,10:00,112,113,550,Youth Mass,Stormy,0,,Saturday,4,Q2,0.204,0
+2025-04-26,17:00,72,72,550,Regular Mass,Stormy,0,,Saturday,4,Q2,0.131,1
+2025-04-27,06:00,208,230,550,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.378,0
+2025-04-27,08:00,293,313,600,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.488,0
+2025-04-27,10:00,361,383,600,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.602,0
+2025-04-27,17:00,262,277,550,Sunday Mass,Cloudy,0,,Sunday,4,Q2,0.476,0
+2025-04-29,17:00,130,144,550,Novena,Sunny,0,,Tuesday,4,Q2,0.236,1
+2025-05-01,06:00,87,90,550,Regular Mass,Sunny,0,,Thursday,5,Q2,0.158,1
+2025-05-02,15:00,148,148,550,Wedding,Cloudy,0,,Friday,5,Q2,0.269,0
+2025-05-03,17:00,116,138,550,Regular Mass,Sunny,0,,Saturday,5,Q2,0.211,1
+2025-05-04,06:00,185,200,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.336,1
+2025-05-04,08:00,296,313,600,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.493,0
+2025-05-04,10:00,332,369,600,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.553,0
+2025-05-04,17:00,257,272,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.467,0
+2025-05-06,17:00,133,145,550,Novena,Sunny,0,,Tuesday,5,Q2,0.242,1
+2025-05-08,06:00,75,75,550,Regular Mass,Sunny,0,,Thursday,5,Q2,0.136,1
+2025-05-09,13:00,84,85,550,Funeral,Cloudy,0,,Friday,5,Q2,0.153,0
+2025-05-10,10:00,154,168,550,Youth Mass,Sunny,0,,Saturday,5,Q2,0.28,0
+2025-05-10,17:00,122,142,550,Regular Mass,Sunny,0,,Saturday,5,Q2,0.222,1
+2025-05-11,06:00,165,184,550,Sunday Mass,Rainy,0,,Sunday,5,Q2,0.3,1
+2025-05-11,08:00,266,288,600,Sunday Mass,Rainy,0,,Sunday,5,Q2,0.443,0
+2025-05-11,10:00,271,294,600,Sunday Mass,Rainy,0,,Sunday,5,Q2,0.452,0
+2025-05-11,17:00,207,224,550,Sunday Mass,Rainy,0,,Sunday,5,Q2,0.376,0
+2025-05-13,17:00,129,129,550,Novena,Sunny,0,,Tuesday,5,Q2,0.235,1
+2025-05-15,06:00,75,81,550,Regular Mass,Sunny,0,,Thursday,5,Q2,0.136,1
+2025-05-17,17:00,108,108,550,Regular Mass,Sunny,0,,Saturday,5,Q2,0.196,1
+2025-05-18,06:00,194,221,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.353,0
+2025-05-18,08:00,289,301,600,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.482,0
+2025-05-18,10:00,329,362,600,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.548,0
+2025-05-18,17:00,225,254,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.409,0
+2025-05-20,17:00,120,136,550,Novena,Sunny,0,,Tuesday,5,Q2,0.218,1
+2025-05-21,13:00,87,87,550,Funeral,Cloudy,0,,Wednesday,5,Q2,0.158,0
+2025-05-22,06:00,69,69,550,Regular Mass,Sunny,0,,Thursday,5,Q2,0.125,1
+2025-05-24,10:00,123,133,550,Youth Mass,Rainy,0,,Saturday,5,Q2,0.224,0
+2025-05-24,17:00,101,105,550,Regular Mass,Rainy,0,,Saturday,5,Q2,0.184,1
+2025-05-25,06:00,194,201,550,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.353,0
+2025-05-25,08:00,308,342,600,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.513,0
+2025-05-25,10:00,328,340,600,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.547,0
+2025-05-25,17:00,250,261,550,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.455,0
+2025-05-27,17:00,112,131,550,Novena,Cloudy,0,,Tuesday,5,Q2,0.204,1
+2025-05-29,06:00,57,57,550,Regular Mass,Stormy,0,,Thursday,5,Q2,0.104,1
+2025-05-31,17:00,89,89,550,Regular Mass,Sunny,0,,Saturday,5,Q2,0.162,1
+2025-06-01,06:00,191,194,550,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.347,1
+2025-06-01,08:00,273,307,600,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.455,0
+2025-06-01,10:00,331,359,600,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.552,0
+2025-06-01,17:00,228,238,550,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.415,0
+2025-06-03,17:00,107,113,550,Novena,Rainy,0,,Tuesday,6,Q2,0.195,1
+2025-06-05,06:00,50,56,550,Regular Mass,Stormy,0,,Thursday,6,Q2,0.091,1
+2025-06-07,17:00,82,84,550,Regular Mass,Rainy,0,,Saturday,6,Q2,0.149,1
+2025-06-08,06:00,175,178,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.318,1
+2025-06-08,08:00,265,272,600,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.442,0
+2025-06-08,09:00,104,116,550,Funeral,Cloudy,0,,Sunday,6,Q2,0.189,0
+2025-06-08,10:00,313,332,600,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.522,0
+2025-06-08,17:00,221,228,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.402,0
+2025-06-10,17:00,110,112,550,Novena,Cloudy,0,,Tuesday,6,Q2,0.2,1
+2025-06-12,06:00,65,78,550,Regular Mass,Rainy,0,,Thursday,6,Q2,0.118,1
+2025-06-14,10:00,98,104,550,Youth Mass,Stormy,0,,Saturday,6,Q2,0.178,0
+2025-06-14,17:00,66,66,550,Regular Mass,Stormy,0,,Saturday,6,Q2,0.12,1
+2025-06-15,06:00,188,191,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.342,1
+2025-06-15,08:00,267,281,600,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.445,0
+2025-06-15,10:00,293,310,600,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.488,0
+2025-06-15,17:00,230,245,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.418,0
+2025-06-17,17:00,133,149,550,Novena,Cloudy,0,,Tuesday,6,Q2,0.242,1
+2025-06-19,06:00,78,78,550,Regular Mass,Sunny,0,,Thursday,6,Q2,0.142,1
+2025-06-21,17:00,99,101,550,Regular Mass,Sunny,0,,Saturday,6,Q2,0.18,1
+2025-06-22,06:00,149,164,550,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.271,1
+2025-06-22,08:00,239,263,600,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.398,0
+2025-06-22,10:00,271,292,600,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.452,0
+2025-06-22,17:00,188,205,550,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.342,1
+2025-06-24,17:00,137,158,550,Novena,Cloudy,0,,Tuesday,6,Q2,0.249,1
+2025-06-26,06:00,59,66,550,Regular Mass,Stormy,0,,Thursday,6,Q2,0.107,1
+2025-06-28,10:00,123,138,550,Youth Mass,Rainy,0,,Saturday,6,Q2,0.224,0
+2025-06-28,17:00,83,99,550,Regular Mass,Rainy,0,,Saturday,6,Q2,0.151,1
+2025-06-29,06:00,184,204,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.335,1
+2025-06-29,08:00,289,289,600,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.482,0
+2025-06-29,10:00,329,350,600,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.548,0
+2025-06-29,17:00,229,249,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.416,0
+2025-07-01,17:00,68,76,550,Novena,Stormy,0,,Tuesday,7,Q3,0.124,1
+2025-07-03,06:00,75,75,550,Regular Mass,Rainy,0,,Thursday,7,Q3,0.136,1
+2025-07-04,15:00,109,110,550,Wedding,Rainy,0,,Friday,7,Q3,0.198,0
+2025-07-05,10:00,134,150,550,Wedding,Cloudy,0,,Saturday,7,Q3,0.244,0
+2025-07-05,17:00,87,98,550,Regular Mass,Cloudy,0,,Saturday,7,Q3,0.158,1
+2025-07-06,06:00,155,158,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.282,1
+2025-07-06,08:00,239,253,600,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.398,0
+2025-07-06,10:00,278,300,600,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.463,0
+2025-07-06,17:00,182,185,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.331,1
+2025-07-08,17:00,108,108,550,Novena,Rainy,0,,Tuesday,7,Q3,0.196,1
+2025-07-10,06:00,71,72,550,Regular Mass,Rainy,0,,Thursday,7,Q3,0.129,1
+2025-07-12,10:00,144,154,550,Youth Mass,Cloudy,0,,Saturday,7,Q3,0.262,0
+2025-07-12,17:00,83,83,550,Regular Mass,Cloudy,0,Unexpected local disruption,Saturday,7,Q3,0.151,1
+2025-07-13,06:00,154,167,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.28,1
+2025-07-13,08:00,237,257,600,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.395,0
+2025-07-13,10:00,268,268,600,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.447,0
+2025-07-13,17:00,204,219,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.371,0
+2025-07-15,17:00,73,77,550,Novena,Stormy,0,,Tuesday,7,Q3,0.133,1
+2025-07-17,06:00,59,67,550,Regular Mass,Rainy,0,,Thursday,7,Q3,0.107,1
+2025-07-19,17:00,94,96,550,Regular Mass,Cloudy,0,,Saturday,7,Q3,0.171,1
+2025-07-20,06:00,183,195,550,Sunday Mass,Sunny,0,,Sunday,7,Q3,0.333,1
+2025-07-20,08:00,278,292,600,Sunday Mass,Sunny,0,,Sunday,7,Q3,0.463,0
+2025-07-20,10:00,329,355,600,Sunday Mass,Sunny,0,,Sunday,7,Q3,0.548,0
+2025-07-20,17:00,252,266,550,Sunday Mass,Sunny,0,,Sunday,7,Q3,0.458,0
+2025-07-22,17:00,98,99,550,Novena,Rainy,0,,Tuesday,7,Q3,0.178,1
+2025-07-24,06:00,79,79,550,Regular Mass,Cloudy,0,,Thursday,7,Q3,0.144,1
+2025-07-26,10:00,120,140,550,Youth Mass,Rainy,0,,Saturday,7,Q3,0.218,0
+2025-07-26,17:00,93,102,550,Regular Mass,Rainy,0,,Saturday,7,Q3,0.169,1
+2025-07-27,06:00,199,224,550,Sunday Mass,Cloudy,0,,Sunday,7,Q3,0.362,0
+2025-07-27,08:00,274,298,600,Sunday Mass,Cloudy,0,,Sunday,7,Q3,0.457,0
+2025-07-27,10:00,301,330,600,Sunday Mass,Cloudy,0,,Sunday,7,Q3,0.502,0
+2025-07-27,17:00,211,234,550,Sunday Mass,Cloudy,0,,Sunday,7,Q3,0.384,0
+2025-07-29,09:00,90,96,550,Funeral,Rainy,0,,Tuesday,7,Q3,0.164,0
+2025-07-29,17:00,116,127,550,Novena,Rainy,0,,Tuesday,7,Q3,0.211,1
+2025-07-31,06:00,80,92,550,Regular Mass,Cloudy,0,,Thursday,7,Q3,0.145,1
+2025-08-02,17:00,93,100,550,Regular Mass,Sunny,0,,Saturday,8,Q3,0.169,1
+2025-08-03,06:00,129,139,550,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.235,1
+2025-08-03,08:00,163,176,600,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.272,1
+2025-08-03,10:00,193,222,600,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.322,1
+2025-08-03,17:00,164,167,550,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.298,1
+2025-08-05,17:00,113,117,550,Novena,Cloudy,0,,Tuesday,8,Q3,0.205,1
+2025-08-07,06:00,81,86,550,Regular Mass,Cloudy,0,,Thursday,8,Q3,0.147,1
+2025-08-08,15:00,85,100,550,Wedding,Sunny,0,Unexpected local disruption,Friday,8,Q3,0.155,0
+2025-08-09,08:00,169,173,550,Parish Event,Rainy,0,,Saturday,8,Q3,0.307,0
+2025-08-09,10:00,133,135,550,Youth Mass,Rainy,0,,Saturday,8,Q3,0.242,0
+2025-08-09,17:00,81,96,550,Regular Mass,Rainy,0,,Saturday,8,Q3,0.147,1
+2025-08-10,06:00,150,160,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.273,1
+2025-08-10,08:00,239,258,600,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.398,0
+2025-08-10,10:00,269,289,600,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.448,0
+2025-08-10,17:00,183,183,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.333,1
+2025-08-12,17:00,120,124,550,Novena,Cloudy,0,,Tuesday,8,Q3,0.218,1
+2025-08-14,06:00,88,103,550,Regular Mass,Cloudy,0,,Thursday,8,Q3,0.16,1
+2025-08-14,13:00,76,78,550,Funeral,Cloudy,0,,Thursday,8,Q3,0.138,0
+2025-08-16,15:00,164,187,550,Parish Event,Cloudy,0,,Saturday,8,Q3,0.298,0
+2025-08-16,17:00,94,96,550,Regular Mass,Cloudy,0,,Saturday,8,Q3,0.171,1
+2025-08-17,06:00,184,199,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.335,1
+2025-08-17,08:00,229,244,600,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.382,0
+2025-08-17,10:00,263,290,600,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.438,0
+2025-08-17,17:00,184,206,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.335,1
+2025-08-19,17:00,127,143,550,Novena,Cloudy,0,,Tuesday,8,Q3,0.231,1
+2025-08-21,06:00,91,92,550,Regular Mass,Sunny,0,,Thursday,8,Q3,0.165,1
+2025-08-23,10:00,88,96,550,Youth Mass,Stormy,0,,Saturday,8,Q3,0.16,0
+2025-08-23,17:00,69,69,550,Regular Mass,Stormy,0,,Saturday,8,Q3,0.125,1
+2025-08-24,06:00,179,187,550,Sunday Mass,Cloudy,0,,Sunday,8,Q3,0.325,1
+2025-08-24,08:00,269,282,600,Sunday Mass,Cloudy,0,,Sunday,8,Q3,0.448,0
+2025-08-24,10:00,329,333,600,Sunday Mass,Cloudy,0,,Sunday,8,Q3,0.548,0
+2025-08-24,17:00,249,269,550,Sunday Mass,Cloudy,0,,Sunday,8,Q3,0.453,0
+2025-08-26,09:00,89,99,550,Funeral,Cloudy,0,,Tuesday,8,Q3,0.162,0
+2025-08-26,17:00,125,127,550,Novena,Cloudy,0,,Tuesday,8,Q3,0.227,1
+2025-08-28,06:00,70,84,550,Regular Mass,Rainy,0,,Thursday,8,Q3,0.127,1
+2025-08-29,15:00,144,155,550,Wedding,Rainy,0,,Friday,8,Q3,0.262,0
+2025-08-30,17:00,104,115,550,Regular Mass,Cloudy,0,,Saturday,8,Q3,0.189,1
+2025-08-31,06:00,158,179,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.287,1
+2025-08-31,08:00,222,237,600,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.37,0
+2025-08-31,10:00,291,318,600,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.485,0
+2025-08-31,17:00,222,236,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.404,0
+2025-09-02,17:00,64,69,550,Novena,Stormy,0,,Tuesday,9,Q3,0.116,1
+2025-09-04,06:00,73,84,550,Regular Mass,Rainy,0,,Thursday,9,Q3,0.133,1
+2025-09-06,17:00,87,93,550,Regular Mass,Rainy,0,,Saturday,9,Q3,0.158,1
+2025-09-07,06:00,119,125,550,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.216,1
+2025-09-07,08:00,184,198,600,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.307,1
+2025-09-07,10:00,192,192,600,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.32,1
+2025-09-07,17:00,160,170,550,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.291,1
+2025-09-09,17:00,133,145,550,Novena,Sunny,0,,Tuesday,9,Q3,0.242,1
+2025-09-11,06:00,50,50,550,Regular Mass,Stormy,0,,Thursday,9,Q3,0.091,1
+2025-09-12,13:00,74,74,550,Funeral,Rainy,0,,Friday,9,Q3,0.135,0
+2025-09-13,10:00,122,135,550,Youth Mass,Rainy,0,,Saturday,9,Q3,0.222,0
+2025-09-13,17:00,94,94,550,Regular Mass,Rainy,0,,Saturday,9,Q3,0.171,1
+2025-09-14,06:00,170,173,550,Sunday Mass,Cloudy,0,Unexpected local disruption,Sunday,9,Q3,0.309,1
+2025-09-14,08:00,286,323,600,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.477,0
+2025-09-14,10:00,352,377,600,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.587,0
+2025-09-14,17:00,231,238,550,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.42,0
+2025-09-16,17:00,89,100,550,Novena,Rainy,0,,Tuesday,9,Q3,0.162,1
+2025-09-18,06:00,95,107,550,Regular Mass,Sunny,0,,Thursday,9,Q3,0.173,1
+2025-09-20,17:00,114,122,550,Regular Mass,Cloudy,0,,Saturday,9,Q3,0.207,1
+2025-09-21,06:00,121,144,550,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.22,1
+2025-09-21,08:00,169,176,600,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.282,1
+2025-09-21,10:00,188,214,600,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.313,1
+2025-09-21,17:00,141,145,550,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.256,1
+2025-09-23,17:00,116,119,550,Novena,Sunny,0,,Tuesday,9,Q3,0.211,1
+2025-09-25,06:00,68,89,550,Regular Mass,Rainy,0,,Thursday,9,Q3,0.124,1
+2025-09-27,10:00,157,164,550,Youth Mass,Cloudy,0,,Saturday,9,Q3,0.285,0
+2025-09-27,17:00,109,118,550,Regular Mass,Cloudy,0,,Saturday,9,Q3,0.198,1
+2025-09-28,06:00,132,145,550,Sunday Mass,Rainy,0,,Sunday,9,Q3,0.24,1
+2025-09-28,08:00,227,227,600,Sunday Mass,Rainy,0,,Sunday,9,Q3,0.378,0
+2025-09-28,10:00,260,290,600,Sunday Mass,Rainy,0,,Sunday,9,Q3,0.433,0
+2025-09-28,17:00,194,206,550,Sunday Mass,Rainy,0,,Sunday,9,Q3,0.353,0
+2025-09-30,17:00,98,113,550,Novena,Rainy,0,,Tuesday,9,Q3,0.178,1
+2025-10-02,06:00,91,105,550,Regular Mass,Sunny,0,,Thursday,10,Q4,0.165,1
+2025-10-04,17:00,81,92,550,Regular Mass,Rainy,0,,Saturday,10,Q4,0.147,1
+2025-10-05,06:00,124,131,550,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.225,1
+2025-10-05,08:00,161,174,600,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.268,1
+2025-10-05,10:00,184,200,600,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.307,1
+2025-10-05,17:00,169,175,550,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.307,1
+2025-10-07,17:00,96,99,550,Novena,Rainy,0,,Tuesday,10,Q4,0.175,1
+2025-10-09,06:00,63,72,550,Regular Mass,Rainy,0,,Thursday,10,Q4,0.115,1
+2025-10-11,10:00,126,136,550,Youth Mass,Rainy,0,,Saturday,10,Q4,0.229,0
+2025-10-11,17:00,91,122,550,Regular Mass,Rainy,0,,Saturday,10,Q4,0.165,1
+2025-10-12,06:00,122,122,550,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.222,1
+2025-10-12,08:00,178,193,600,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.297,1
+2025-10-12,10:00,203,203,600,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.338,1
+2025-10-12,17:00,158,158,550,Sunday Mass,Stormy,0,,Sunday,10,Q4,0.287,1
+2025-10-14,17:00,124,130,550,Novena,Cloudy,0,,Tuesday,10,Q4,0.225,1
+2025-10-16,06:00,70,70,550,Regular Mass,Rainy,0,,Thursday,10,Q4,0.127,1
+2025-10-18,17:00,63,63,550,Regular Mass,Stormy,0,,Saturday,10,Q4,0.115,1
+2025-10-19,06:00,203,224,550,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.369,0
+2025-10-19,08:00,300,327,600,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.5,0
+2025-10-19,10:00,329,371,600,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.548,0
+2025-10-19,17:00,249,267,550,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.453,0
+2025-10-21,17:00,108,108,550,Novena,Rainy,0,,Tuesday,10,Q4,0.196,1
+2025-10-23,06:00,54,65,550,Regular Mass,Rainy,0,,Thursday,10,Q4,0.098,1
+2025-10-25,10:00,161,174,550,Youth Mass,Sunny,0,,Saturday,10,Q4,0.293,0
+2025-10-25,15:00,182,188,550,Parish Event,Sunny,0,,Saturday,10,Q4,0.331,0
+2025-10-25,17:00,83,83,550,Regular Mass,Sunny,0,,Saturday,10,Q4,0.151,1
+2025-10-26,06:00,176,189,550,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.32,1
+2025-10-26,08:00,279,283,600,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.465,0
+2025-10-26,10:00,325,363,600,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.542,0
+2025-10-26,17:00,233,233,550,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.424,0
+2025-10-28,17:00,74,83,550,Novena,Stormy,0,,Tuesday,10,Q4,0.135,1
+2025-10-30,06:00,92,105,550,Regular Mass,Cloudy,0,,Thursday,10,Q4,0.167,1
+2025-11-01,08:00,331,373,600,Holiday Mass,Rainy,1,All Saints Day,Saturday,11,Q4,0.552,0
+2025-11-01,17:00,310,331,550,Holiday Mass,Rainy,1,All Saints Day,Saturday,11,Q4,0.564,0
+2025-11-01,17:00,122,143,550,Regular Mass,Rainy,1,All Saints Day,Saturday,11,Q4,0.222,1
+2025-11-02,06:00,161,178,550,Sunday Mass,Stormy,1,All Souls Day,Sunday,11,Q4,0.293,1
+2025-11-02,08:00,251,277,600,Holiday Mass,Stormy,1,All Souls Day,Sunday,11,Q4,0.418,0
+2025-11-02,08:00,253,253,600,Sunday Mass,Stormy,1,All Souls Day,Sunday,11,Q4,0.422,0
+2025-11-02,10:00,262,271,600,Sunday Mass,Stormy,1,All Souls Day,Sunday,11,Q4,0.437,0
+2025-11-02,17:00,213,231,550,Holiday Mass,Stormy,1,All Souls Day,Sunday,11,Q4,0.387,0
+2025-11-02,17:00,192,207,550,Sunday Mass,Stormy,1,All Souls Day,Sunday,11,Q4,0.349,1
+2025-11-04,17:00,107,113,550,Novena,Rainy,0,,Tuesday,11,Q4,0.195,1
+2025-11-06,06:00,91,101,550,Regular Mass,Cloudy,0,,Thursday,11,Q4,0.165,1
+2025-11-06,13:00,96,102,550,Funeral,Cloudy,0,,Thursday,11,Q4,0.175,0
+2025-11-07,13:00,78,102,550,Funeral,Rainy,0,,Friday,11,Q4,0.142,0
+2025-11-08,10:00,151,152,550,Youth Mass,Cloudy,0,,Saturday,11,Q4,0.275,0
+2025-11-08,17:00,103,113,550,Regular Mass,Cloudy,0,,Saturday,11,Q4,0.187,1
+2025-11-09,06:00,203,210,550,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.369,0
+2025-11-09,08:00,300,350,600,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.5,0
+2025-11-09,10:00,319,350,600,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.532,0
+2025-11-09,17:00,246,246,550,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.447,0
+2025-11-11,17:00,98,111,550,Novena,Rainy,0,,Tuesday,11,Q4,0.178,1
+2025-11-13,06:00,72,76,550,Regular Mass,Rainy,0,,Thursday,11,Q4,0.131,1
+2025-11-15,08:00,190,205,550,Parish Event,Cloudy,0,,Saturday,11,Q4,0.345,0
+2025-11-15,09:00,99,112,550,Funeral,Cloudy,0,,Saturday,11,Q4,0.18,0
+2025-11-15,17:00,98,106,550,Regular Mass,Cloudy,0,,Saturday,11,Q4,0.178,1
+2025-11-16,06:00,174,184,550,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.316,1
+2025-11-16,08:00,286,302,600,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.477,0
+2025-11-16,10:00,319,332,600,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.532,0
+2025-11-16,17:00,229,253,550,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.416,0
+2025-11-18,17:00,82,95,550,Novena,Stormy,0,,Tuesday,11,Q4,0.149,1
+2025-11-20,06:00,64,73,550,Regular Mass,Rainy,0,,Thursday,11,Q4,0.116,1
+2025-11-22,10:00,108,132,550,Youth Mass,Stormy,0,,Saturday,11,Q4,0.196,0
+2025-11-22,17:00,79,89,550,Regular Mass,Stormy,0,,Saturday,11,Q4,0.144,1
+2025-11-23,06:00,120,120,550,Sunday Mass,Stormy,0,,Sunday,11,Q4,0.218,1
+2025-11-23,08:00,88,92,600,Sunday Mass,Stormy,0,Unexpected local disruption,Sunday,11,Q4,0.147,1
+2025-11-23,10:00,211,226,600,Sunday Mass,Stormy,0,,Sunday,11,Q4,0.352,0
+2025-11-23,17:00,146,150,550,Sunday Mass,Stormy,0,,Sunday,11,Q4,0.265,1
+2025-11-24,09:00,55,55,550,Funeral,Stormy,0,,Monday,11,Q4,0.1,0
+2025-11-25,17:00,90,95,550,Novena,Cloudy,0,Unexpected local disruption,Tuesday,11,Q4,0.164,1
+2025-11-27,06:00,52,61,550,Regular Mass,Stormy,0,,Thursday,11,Q4,0.095,1
+2025-11-28,09:00,89,96,550,Funeral,Cloudy,0,,Friday,11,Q4,0.162,0
+2025-11-29,09:00,92,99,550,Funeral,Rainy,0,,Saturday,11,Q4,0.167,0
+2025-11-29,17:00,92,92,550,Regular Mass,Rainy,0,,Saturday,11,Q4,0.167,1
+2025-11-30,06:00,176,201,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.32,1
+2025-11-30,08:00,242,253,600,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.403,0
+2025-11-30,10:00,295,308,600,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.492,0
+2025-11-30,17:00,206,206,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.375,0
+2025-12-02,17:00,125,144,550,Novena,Cloudy,0,,Tuesday,12,Q4,0.227,1
+2025-12-04,06:00,88,94,550,Regular Mass,Cloudy,0,,Thursday,12,Q4,0.16,1
+2025-12-06,17:00,111,124,550,Regular Mass,Rainy,0,,Saturday,12,Q4,0.202,1
+2025-12-07,06:00,195,200,550,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.355,0
+2025-12-07,08:00,316,341,600,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.527,0
+2025-12-07,10:00,364,375,600,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.607,0
+2025-12-07,17:00,278,290,550,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.505,0
+2025-12-08,08:00,456,499,600,Holiday Mass,Sunny,1,Feast of the Immaculate Conception,Monday,12,Q4,0.76,0
+2025-12-08,17:00,390,432,550,Holiday Mass,Sunny,1,Feast of the Immaculate Conception,Monday,12,Q4,0.709,0
+2025-12-09,17:00,131,157,550,Novena,Rainy,0,,Tuesday,12,Q4,0.238,1
+2025-12-11,06:00,96,102,550,Regular Mass,Sunny,0,,Thursday,12,Q4,0.175,1
+2025-12-11,09:00,122,123,550,Funeral,Sunny,0,,Thursday,12,Q4,0.222,0
+2025-12-13,08:00,169,185,550,Parish Event,Rainy,0,,Saturday,12,Q4,0.307,0
+2025-12-13,10:00,138,155,550,Youth Mass,Rainy,0,,Saturday,12,Q4,0.251,0
+2025-12-13,17:00,115,126,550,Regular Mass,Rainy,0,,Saturday,12,Q4,0.209,1
+2025-12-14,06:00,223,242,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.405,0
+2025-12-14,08:00,296,305,600,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.493,0
+2025-12-14,10:00,361,389,600,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.602,0
+2025-12-14,17:00,276,298,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.502,0
+2025-12-16,17:00,142,143,550,Novena,Sunny,0,,Tuesday,12,Q4,0.258,1
+2025-12-18,06:00,88,88,550,Regular Mass,Rainy,0,,Thursday,12,Q4,0.16,1
+2025-12-20,17:00,121,135,550,Regular Mass,Sunny,0,,Saturday,12,Q4,0.22,1
+2025-12-21,06:00,243,251,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.442,0
+2025-12-21,08:00,333,333,600,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.555,0
+2025-12-21,10:00,373,393,600,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.622,0
+2025-12-21,17:00,275,294,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.5,0
+2025-12-23,17:00,121,136,550,Novena,Cloudy,0,,Tuesday,12,Q4,0.22,1
+2025-12-24,08:00,335,380,600,Holiday Mass,Stormy,1,Christmas Eve,Wednesday,12,Q4,0.558,0
+2025-12-24,17:00,290,313,550,Holiday Mass,Stormy,1,Christmas Eve,Wednesday,12,Q4,0.527,0
+2025-12-25,06:00,144,166,550,Regular Mass,Cloudy,1,Christmas Day,Thursday,12,Q4,0.262,1
+2025-12-25,08:00,552,585,600,Holiday Mass,Cloudy,1,Christmas Day,Thursday,12,Q4,0.92,0
+2025-12-25,17:00,481,501,550,Holiday Mass,Cloudy,1,Christmas Day,Thursday,12,Q4,0.875,0
+2025-12-27,10:00,171,179,550,Youth Mass,Cloudy,0,,Saturday,12,Q4,0.311,0
+2025-12-27,17:00,120,126,550,Regular Mass,Cloudy,0,,Saturday,12,Q4,0.218,1
+2025-12-28,06:00,187,195,550,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.34,1
+2025-12-28,08:00,290,331,600,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.483,0
+2025-12-28,10:00,314,332,600,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.523,0
+2025-12-28,17:00,229,235,550,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.416,0
+2025-12-29,09:00,135,141,550,Funeral,Sunny,0,,Monday,12,Q4,0.245,0
+2025-12-30,17:00,132,148,550,Novena,Rainy,0,,Tuesday,12,Q4,0.24,1
+2025-12-31,08:00,410,414,600,Holiday Mass,Cloudy,1,Year-End Thanksgiving Mass,Wednesday,12,Q4,0.683,0
+2025-12-31,17:00,360,395,550,Holiday Mass,Cloudy,1,Year-End Thanksgiving Mass,Wednesday,12,Q4,0.655,0

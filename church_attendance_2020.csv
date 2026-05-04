@@ -1,0 +1,433 @@
+date,mass_time,attendance,foot_traffic_count,capacity,event_type,weather_condition,holiday_flag,special_event_notes,day_of_week,month,quarter,attendance_rate,low_attendance_alert
+1/1/2020,8:00,249,260,550,Holiday Mass,Sunny,1,New Year Mass,Wednesday,1,Q1,0.453,0
+1/1/2020,17:00,228,256,500,Holiday Mass,Sunny,1,New Year Mass,Wednesday,1,Q1,0.456,0
+1/2/2020,6:00,52,52,500,Regular Mass,Sunny,0,,Thursday,1,Q1,0.104,1
+1/4/2020,17:00,83,85,500,Regular Mass,Sunny,0,,Saturday,1,Q1,0.166,1
+1/5/2020,6:00,116,122,500,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.232,1
+1/5/2020,8:00,180,194,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.327,1
+1/5/2020,10:00,216,216,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.393,0
+1/5/2020,17:00,168,168,500,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.336,1
+1/7/2020,17:00,88,92,500,Novena,Sunny,0,,Tuesday,1,Q1,0.176,1
+1/8/2020,13:00,62,78,500,Funeral,Sunny,0,,Wednesday,1,Q1,0.124,0
+1/9/2020,6:00,28,28,500,Regular Mass,Stormy,0,,Thursday,1,Q1,0.056,1
+1/11/2020,10:00,98,103,500,Youth Mass,Sunny,0,,Saturday,1,Q1,0.196,0
+1/11/2020,17:00,73,85,500,Regular Mass,Sunny,0,,Saturday,1,Q1,0.146,1
+1/12/2020,6:00,135,135,500,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.27,1
+1/12/2020,8:00,193,207,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.351,0
+1/12/2020,10:00,214,216,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.389,0
+1/12/2020,17:00,190,200,500,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.38,0
+1/14/2020,17:00,92,108,500,Novena,Cloudy,0,,Tuesday,1,Q1,0.184,1
+1/16/2020,6:00,64,66,500,Regular Mass,Sunny,0,,Thursday,1,Q1,0.128,1
+1/18/2020,9:00,66,74,500,Funeral,Sunny,0,,Saturday,1,Q1,0.132,0
+1/18/2020,17:00,37,37,500,Regular Mass,Sunny,0,Unexpected local disruption,Saturday,1,Q1,0.074,1
+1/19/2020,6:00,107,112,500,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.214,1
+1/19/2020,8:00,188,210,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.342,1
+1/19/2020,10:00,214,223,550,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.389,0
+1/19/2020,17:00,172,185,500,Sunday Mass,Cloudy,0,,Sunday,1,Q1,0.344,1
+1/21/2020,17:00,71,71,500,Novena,Cloudy,0,,Tuesday,1,Q1,0.142,1
+1/23/2020,6:00,48,56,500,Regular Mass,Sunny,0,,Thursday,1,Q1,0.096,1
+1/25/2020,10:00,102,112,500,Youth Mass,Sunny,0,,Saturday,1,Q1,0.204,0
+1/25/2020,17:00,79,89,500,Regular Mass,Sunny,0,,Saturday,1,Q1,0.158,1
+1/26/2020,6:00,130,138,500,Sunday Mass,Rainy,0,,Sunday,1,Q1,0.26,1
+1/26/2020,8:00,172,185,550,Sunday Mass,Rainy,0,,Sunday,1,Q1,0.313,1
+1/26/2020,10:00,193,203,550,Sunday Mass,Rainy,0,,Sunday,1,Q1,0.351,0
+1/26/2020,17:00,141,145,500,Sunday Mass,Rainy,0,,Sunday,1,Q1,0.282,1
+1/28/2020,17:00,85,103,500,Novena,Cloudy,0,,Tuesday,1,Q1,0.17,1
+1/30/2020,6:00,63,67,500,Regular Mass,Sunny,0,,Thursday,1,Q1,0.126,1
+2/1/2020,17:00,48,59,500,Regular Mass,Cloudy,0,Unexpected local disruption,Saturday,2,Q1,0.096,1
+2/2/2020,6:00,97,100,500,Sunday Mass,Stormy,0,,Sunday,2,Q1,0.194,1
+2/2/2020,8:00,130,142,550,Sunday Mass,Stormy,0,,Sunday,2,Q1,0.236,1
+2/2/2020,10:00,143,154,550,Sunday Mass,Stormy,0,,Sunday,2,Q1,0.26,1
+2/2/2020,17:00,116,127,500,Sunday Mass,Stormy,0,,Sunday,2,Q1,0.232,1
+2/4/2020,17:00,85,96,500,Novena,Sunny,0,,Tuesday,2,Q1,0.17,1
+2/6/2020,6:00,49,53,500,Regular Mass,Rainy,0,,Thursday,2,Q1,0.098,1
+2/8/2020,10:00,99,112,500,Youth Mass,Sunny,0,,Saturday,2,Q1,0.198,0
+2/8/2020,17:00,67,77,500,Regular Mass,Sunny,0,,Saturday,2,Q1,0.134,1
+2/9/2020,6:00,161,180,500,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.322,1
+2/9/2020,8:00,170,188,550,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.309,1
+2/9/2020,10:00,215,219,550,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.391,0
+2/9/2020,17:00,171,187,500,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.342,1
+2/11/2020,17:00,72,87,500,Novena,Sunny,0,,Tuesday,2,Q1,0.144,1
+2/13/2020,6:00,64,64,500,Regular Mass,Cloudy,0,,Thursday,2,Q1,0.128,1
+2/14/2020,8:00,239,256,550,Holiday Mass,Sunny,1,Ash Wednesday/Valentine Season,Friday,2,Q1,0.435,0
+2/14/2020,10:00,121,132,500,Wedding,Sunny,1,Ash Wednesday/Valentine Season,Friday,2,Q1,0.242,0
+2/14/2020,17:00,193,216,500,Holiday Mass,Sunny,1,Ash Wednesday/Valentine Season,Friday,2,Q1,0.386,0
+2/15/2020,17:00,73,86,500,Regular Mass,Cloudy,0,,Saturday,2,Q1,0.146,1
+2/16/2020,6:00,148,164,500,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.296,1
+2/16/2020,8:00,184,190,550,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.335,1
+2/16/2020,10:00,206,231,550,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.375,0
+2/16/2020,17:00,151,167,500,Sunday Mass,Sunny,0,,Sunday,2,Q1,0.302,1
+2/18/2020,17:00,86,92,500,Novena,Sunny,0,,Tuesday,2,Q1,0.172,1
+2/20/2020,6:00,58,58,500,Regular Mass,Cloudy,0,,Thursday,2,Q1,0.116,1
+2/22/2020,10:00,104,112,500,Youth Mass,Cloudy,0,,Saturday,2,Q1,0.208,0
+2/22/2020,17:00,56,56,500,Regular Mass,Cloudy,0,,Saturday,2,Q1,0.112,1
+2/23/2020,6:00,132,136,500,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.264,1
+2/23/2020,8:00,209,236,550,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.38,0
+2/23/2020,10:00,217,240,550,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.395,0
+2/23/2020,17:00,152,159,500,Sunday Mass,Cloudy,0,,Sunday,2,Q1,0.304,1
+2/25/2020,17:00,80,92,500,Novena,Sunny,0,,Tuesday,2,Q1,0.16,1
+2/27/2020,6:00,46,54,500,Regular Mass,Cloudy,0,,Thursday,2,Q1,0.092,1
+2/29/2020,17:00,60,69,500,Regular Mass,Cloudy,0,,Saturday,2,Q1,0.12,1
+3/1/2020,6:00,154,170,500,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.308,1
+3/1/2020,8:00,195,216,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.355,0
+3/1/2020,10:00,239,239,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.435,0
+3/1/2020,17:00,159,171,500,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.318,1
+3/3/2020,17:00,73,73,500,Novena,Rainy,0,,Tuesday,3,Q1,0.146,1
+3/5/2020,6:00,51,51,500,Regular Mass,Cloudy,0,,Thursday,3,Q1,0.102,1
+3/6/2020,10:00,104,121,500,Wedding,Cloudy,0,,Friday,3,Q1,0.208,0
+3/7/2020,9:00,54,56,500,Funeral,Stormy,0,,Saturday,3,Q1,0.108,0
+3/7/2020,17:00,50,53,500,Regular Mass,Stormy,0,,Saturday,3,Q1,0.1,1
+3/8/2020,6:00,143,157,500,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.286,1
+3/8/2020,8:00,201,218,550,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.365,0
+3/8/2020,9:00,84,91,500,Funeral,Sunny,0,,Sunday,3,Q1,0.168,0
+3/8/2020,10:00,240,254,550,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.436,0
+3/8/2020,17:00,156,170,500,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.312,1
+3/10/2020,17:00,89,107,500,Novena,Cloudy,0,,Tuesday,3,Q1,0.178,1
+3/12/2020,6:00,50,50,500,Regular Mass,Sunny,0,,Thursday,3,Q1,0.1,1
+3/14/2020,10:00,111,120,500,Youth Mass,Sunny,0,,Saturday,3,Q1,0.222,0
+3/14/2020,17:00,75,84,500,Regular Mass,Sunny,0,,Saturday,3,Q1,0.15,1
+3/15/2020,6:00,124,134,500,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.248,1
+3/15/2020,8:00,223,229,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.405,0
+3/15/2020,10:00,219,221,550,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.398,0
+3/15/2020,17:00,151,158,500,Sunday Mass,Cloudy,0,,Sunday,3,Q1,0.302,1
+3/17/2020,17:00,94,99,500,Novena,Sunny,0,,Tuesday,3,Q1,0.188,1
+3/19/2020,6:00,55,55,500,Regular Mass,Sunny,0,,Thursday,3,Q1,0.11,1
+3/21/2020,17:00,51,55,500,Regular Mass,Rainy,0,,Saturday,3,Q1,0.102,1
+3/22/2020,6:00,144,144,500,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.288,1
+3/22/2020,8:00,180,193,550,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.327,1
+3/22/2020,9:00,60,68,500,Funeral,Sunny,0,,Sunday,3,Q1,0.12,0
+3/22/2020,10:00,257,280,550,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.467,0
+3/22/2020,17:00,151,167,500,Sunday Mass,Sunny,0,,Sunday,3,Q1,0.302,1
+3/24/2020,17:00,97,100,500,Novena,Sunny,0,,Tuesday,3,Q1,0.194,1
+3/26/2020,6:00,43,45,500,Regular Mass,Rainy,0,Unexpected local disruption,Thursday,3,Q1,0.086,1
+3/28/2020,10:00,102,110,500,Youth Mass,Rainy,0,,Saturday,3,Q1,0.204,0
+3/28/2020,17:00,57,67,500,Regular Mass,Rainy,0,,Saturday,3,Q1,0.114,1
+3/29/2020,6:00,165,184,500,Sunday Mass,Cloudy,1,Holy Week,Sunday,3,Q1,0.33,1
+3/29/2020,8:00,282,305,550,Holiday Mass,Cloudy,1,Holy Week,Sunday,3,Q1,0.513,0
+3/29/2020,8:00,251,275,550,Sunday Mass,Cloudy,1,Holy Week,Sunday,3,Q1,0.456,0
+3/29/2020,10:00,308,326,550,Sunday Mass,Cloudy,1,Holy Week,Sunday,3,Q1,0.56,0
+3/29/2020,17:00,254,284,500,Holiday Mass,Cloudy,1,Holy Week,Sunday,3,Q1,0.508,0
+3/29/2020,17:00,220,255,500,Sunday Mass,Cloudy,1,Holy Week,Sunday,3,Q1,0.44,0
+3/31/2020,8:00,340,370,550,Holiday Mass,Sunny,1,Easter Sunday,Tuesday,3,Q1,0.618,0
+3/31/2020,17:00,310,316,500,Holiday Mass,Sunny,1,Easter Sunday,Tuesday,3,Q1,0.62,0
+3/31/2020,17:00,138,138,500,Novena,Sunny,1,Easter Sunday,Tuesday,3,Q1,0.276,1
+4/2/2020,6:00,45,45,500,Regular Mass,Sunny,0,,Thursday,4,Q2,0.09,1
+4/4/2020,17:00,80,88,500,Regular Mass,Cloudy,0,,Saturday,4,Q2,0.16,1
+4/5/2020,6:00,138,150,500,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.276,1
+4/5/2020,8:00,233,243,550,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.424,0
+4/5/2020,10:00,207,224,550,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.376,0
+4/5/2020,17:00,143,158,500,Sunday Mass,Sunny,0,Unexpected local disruption,Sunday,4,Q2,0.286,1
+4/7/2020,17:00,94,94,500,Novena,Sunny,0,,Tuesday,4,Q2,0.188,1
+4/9/2020,6:00,69,78,500,Regular Mass,Sunny,0,,Thursday,4,Q2,0.138,1
+4/10/2020,15:00,129,140,500,Wedding,Sunny,0,,Friday,4,Q2,0.258,0
+4/11/2020,8:00,147,147,500,Parish Event,Sunny,0,,Saturday,4,Q2,0.294,0
+4/11/2020,10:00,118,127,500,Youth Mass,Sunny,0,,Saturday,4,Q2,0.236,0
+4/11/2020,17:00,84,92,500,Regular Mass,Sunny,0,,Saturday,4,Q2,0.168,1
+4/12/2020,6:00,132,132,500,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.264,1
+4/12/2020,8:00,206,225,550,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.375,0
+4/12/2020,10:00,222,234,550,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.404,0
+4/12/2020,17:00,158,160,500,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.316,1
+4/14/2020,17:00,71,82,500,Novena,Cloudy,0,,Tuesday,4,Q2,0.142,1
+4/16/2020,6:00,55,55,500,Regular Mass,Cloudy,0,,Thursday,4,Q2,0.11,1
+4/18/2020,17:00,82,82,500,Regular Mass,Cloudy,0,,Saturday,4,Q2,0.164,1
+4/19/2020,6:00,153,156,500,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.306,1
+4/19/2020,8:00,217,247,550,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.395,0
+4/19/2020,10:00,218,218,550,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.396,0
+4/19/2020,17:00,183,192,500,Sunday Mass,Sunny,0,,Sunday,4,Q2,0.366,0
+4/21/2020,17:00,82,83,500,Novena,Rainy,0,,Tuesday,4,Q2,0.164,1
+4/23/2020,6:00,57,67,500,Regular Mass,Sunny,0,,Thursday,4,Q2,0.114,1
+4/25/2020,10:00,61,76,500,Youth Mass,Stormy,0,,Saturday,4,Q2,0.122,0
+4/25/2020,17:00,54,65,500,Regular Mass,Stormy,0,,Saturday,4,Q2,0.108,1
+4/26/2020,6:00,122,144,500,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.244,1
+4/26/2020,8:00,173,180,550,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.315,1
+4/26/2020,10:00,191,202,550,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.347,1
+4/26/2020,17:00,147,174,500,Sunday Mass,Rainy,0,,Sunday,4,Q2,0.294,1
+4/28/2020,17:00,75,75,500,Novena,Rainy,0,,Tuesday,4,Q2,0.15,1
+4/30/2020,6:00,49,59,500,Regular Mass,Rainy,0,,Thursday,4,Q2,0.098,1
+5/2/2020,17:00,71,71,500,Regular Mass,Cloudy,0,,Saturday,5,Q2,0.142,1
+5/3/2020,6:00,144,165,500,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.288,1
+5/3/2020,8:00,191,206,550,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.347,1
+5/3/2020,10:00,233,257,550,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.424,0
+5/3/2020,17:00,180,201,500,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.36,0
+5/5/2020,17:00,71,71,500,Novena,Rainy,0,,Tuesday,5,Q2,0.142,1
+5/7/2020,6:00,57,57,500,Regular Mass,Cloudy,0,,Thursday,5,Q2,0.114,1
+5/9/2020,10:00,86,92,500,Wedding,Rainy,0,,Saturday,5,Q2,0.172,0
+5/9/2020,10:00,80,96,500,Youth Mass,Rainy,0,,Saturday,5,Q2,0.16,0
+5/9/2020,17:00,49,54,500,Regular Mass,Rainy,0,,Saturday,5,Q2,0.098,1
+5/10/2020,6:00,131,153,500,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.262,1
+5/10/2020,8:00,181,203,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.329,1
+5/10/2020,10:00,211,234,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.384,0
+5/10/2020,17:00,153,160,500,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.306,1
+5/12/2020,9:00,72,72,500,Funeral,Sunny,0,,Tuesday,5,Q2,0.144,0
+5/12/2020,17:00,75,82,500,Novena,Sunny,0,,Tuesday,5,Q2,0.15,1
+5/14/2020,6:00,46,46,500,Regular Mass,Rainy,0,,Thursday,5,Q2,0.092,1
+5/16/2020,13:00,55,62,500,Funeral,Sunny,0,,Saturday,5,Q2,0.11,0
+5/16/2020,17:00,83,86,500,Regular Mass,Sunny,0,,Saturday,5,Q2,0.166,1
+5/17/2020,6:00,122,133,500,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.244,1
+5/17/2020,8:00,191,210,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.347,1
+5/17/2020,10:00,214,221,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.389,0
+5/17/2020,17:00,158,175,500,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.316,1
+5/19/2020,17:00,103,110,500,Novena,Sunny,0,,Tuesday,5,Q2,0.206,1
+5/21/2020,6:00,59,73,500,Regular Mass,Cloudy,0,,Thursday,5,Q2,0.118,1
+5/23/2020,10:00,104,114,500,Youth Mass,Cloudy,0,,Saturday,5,Q2,0.208,0
+5/23/2020,17:00,65,65,500,Regular Mass,Cloudy,0,,Saturday,5,Q2,0.13,1
+5/24/2020,6:00,135,142,500,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.27,1
+5/24/2020,8:00,213,221,550,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.387,0
+5/24/2020,10:00,231,244,550,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.42,0
+5/24/2020,17:00,167,174,500,Sunday Mass,Sunny,0,,Sunday,5,Q2,0.334,1
+5/26/2020,17:00,79,88,500,Novena,Sunny,0,,Tuesday,5,Q2,0.158,1
+5/28/2020,6:00,46,46,500,Regular Mass,Rainy,0,,Thursday,5,Q2,0.092,1
+5/30/2020,17:00,36,42,500,Regular Mass,Stormy,0,,Saturday,5,Q2,0.072,1
+5/31/2020,6:00,137,145,500,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.274,1
+5/31/2020,8:00,169,184,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.307,1
+5/31/2020,10:00,213,224,550,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.387,0
+5/31/2020,17:00,143,168,500,Sunday Mass,Cloudy,0,,Sunday,5,Q2,0.286,1
+6/2/2020,17:00,87,98,500,Novena,Sunny,0,,Tuesday,6,Q2,0.174,1
+6/4/2020,6:00,54,66,500,Regular Mass,Sunny,0,,Thursday,6,Q2,0.108,1
+6/6/2020,17:00,61,72,500,Regular Mass,Cloudy,0,,Saturday,6,Q2,0.122,1
+6/7/2020,6:00,160,164,500,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.32,1
+6/7/2020,8:00,193,201,550,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.351,0
+6/7/2020,10:00,215,238,550,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.391,0
+6/7/2020,17:00,189,206,500,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.378,0
+6/8/2020,13:00,59,61,500,Funeral,Rainy,0,,Monday,6,Q2,0.118,0
+6/9/2020,17:00,77,83,500,Novena,Rainy,0,,Tuesday,6,Q2,0.154,1
+6/11/2020,6:00,66,80,500,Regular Mass,Sunny,0,,Thursday,6,Q2,0.132,1
+6/13/2020,10:00,87,87,500,Youth Mass,Rainy,0,,Saturday,6,Q2,0.174,0
+6/13/2020,17:00,69,77,500,Regular Mass,Rainy,0,,Saturday,6,Q2,0.138,1
+6/14/2020,6:00,92,106,500,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.184,1
+6/14/2020,8:00,158,169,550,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.287,1
+6/14/2020,10:00,190,190,550,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.345,1
+6/14/2020,17:00,119,123,500,Sunday Mass,Rainy,0,,Sunday,6,Q2,0.238,1
+6/16/2020,17:00,85,100,500,Novena,Sunny,0,,Tuesday,6,Q2,0.17,1
+6/18/2020,6:00,45,46,500,Regular Mass,Rainy,0,,Thursday,6,Q2,0.09,1
+6/20/2020,17:00,39,47,500,Regular Mass,Stormy,0,,Saturday,6,Q2,0.078,1
+6/21/2020,6:00,128,128,500,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.256,1
+6/21/2020,8:00,171,180,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.311,1
+6/21/2020,10:00,231,244,550,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.42,0
+6/21/2020,17:00,143,147,500,Sunday Mass,Cloudy,0,,Sunday,6,Q2,0.286,1
+6/23/2020,17:00,73,76,500,Novena,Rainy,0,,Tuesday,6,Q2,0.146,1
+6/25/2020,6:00,51,54,500,Regular Mass,Rainy,0,,Thursday,6,Q2,0.102,1
+6/27/2020,10:00,91,99,500,Youth Mass,Cloudy,0,,Saturday,6,Q2,0.182,0
+6/27/2020,17:00,68,81,500,Regular Mass,Cloudy,0,,Saturday,6,Q2,0.136,1
+6/28/2020,6:00,120,139,500,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.24,1
+6/28/2020,8:00,190,201,550,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.345,1
+6/28/2020,10:00,223,223,550,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.405,0
+6/28/2020,17:00,151,160,500,Sunday Mass,Sunny,0,,Sunday,6,Q2,0.302,1
+6/30/2020,17:00,78,81,500,Novena,Cloudy,0,,Tuesday,6,Q2,0.156,1
+7/2/2020,6:00,48,59,500,Regular Mass,Rainy,0,,Thursday,7,Q3,0.096,1
+7/4/2020,17:00,64,64,500,Regular Mass,Cloudy,0,,Saturday,7,Q3,0.128,1
+7/5/2020,6:00,121,133,500,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.242,1
+7/5/2020,8:00,156,170,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.284,1
+7/5/2020,10:00,198,204,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.36,0
+7/5/2020,17:00,146,146,500,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.292,1
+7/7/2020,17:00,93,104,500,Novena,Sunny,0,,Tuesday,7,Q3,0.186,1
+7/9/2020,6:00,33,36,500,Regular Mass,Rainy,0,,Thursday,7,Q3,0.066,1
+7/11/2020,10:00,85,89,500,Youth Mass,Rainy,0,,Saturday,7,Q3,0.17,0
+7/11/2020,17:00,49,62,500,Regular Mass,Rainy,0,,Saturday,7,Q3,0.098,1
+7/12/2020,6:00,140,151,500,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.28,1
+7/12/2020,8:00,164,180,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.298,1
+7/12/2020,10:00,178,190,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.324,1
+7/12/2020,17:00,125,137,500,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.25,1
+7/14/2020,13:00,69,74,500,Funeral,Sunny,0,,Tuesday,7,Q3,0.138,0
+7/14/2020,17:00,80,86,500,Novena,Sunny,0,,Tuesday,7,Q3,0.16,1
+7/16/2020,6:00,61,61,500,Regular Mass,Rainy,0,,Thursday,7,Q3,0.122,1
+7/18/2020,17:00,69,74,500,Regular Mass,Sunny,0,,Saturday,7,Q3,0.138,1
+7/19/2020,6:00,110,141,500,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.22,1
+7/19/2020,8:00,150,171,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.273,1
+7/19/2020,10:00,191,211,550,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.347,1
+7/19/2020,17:00,128,128,500,Sunday Mass,Rainy,0,,Sunday,7,Q3,0.256,1
+7/21/2020,17:00,72,72,500,Novena,Rainy,0,,Tuesday,7,Q3,0.144,1
+7/23/2020,6:00,66,73,500,Regular Mass,Cloudy,0,,Thursday,7,Q3,0.132,1
+7/25/2020,10:00,101,101,500,Youth Mass,Sunny,0,,Saturday,7,Q3,0.202,0
+7/25/2020,17:00,82,84,500,Regular Mass,Sunny,0,,Saturday,7,Q3,0.164,1
+7/26/2020,6:00,83,98,500,Sunday Mass,Stormy,0,,Sunday,7,Q3,0.166,1
+7/26/2020,8:00,112,126,550,Sunday Mass,Stormy,0,,Sunday,7,Q3,0.204,1
+7/26/2020,10:00,123,124,550,Sunday Mass,Stormy,0,,Sunday,7,Q3,0.224,1
+7/26/2020,17:00,101,111,500,Sunday Mass,Stormy,0,,Sunday,7,Q3,0.202,1
+7/28/2020,17:00,72,80,500,Novena,Rainy,0,,Tuesday,7,Q3,0.144,1
+7/30/2020,6:00,59,66,500,Regular Mass,Sunny,0,,Thursday,7,Q3,0.118,1
+8/1/2020,17:00,58,68,500,Regular Mass,Rainy,0,,Saturday,8,Q3,0.116,1
+8/2/2020,6:00,98,101,500,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.196,1
+8/2/2020,8:00,160,182,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.291,1
+8/2/2020,10:00,185,185,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.336,1
+8/2/2020,17:00,121,135,500,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.242,1
+8/4/2020,17:00,84,92,500,Novena,Sunny,0,,Tuesday,8,Q3,0.168,1
+8/6/2020,6:00,51,56,500,Regular Mass,Sunny,0,,Thursday,8,Q3,0.102,1
+8/8/2020,10:00,110,118,500,Youth Mass,Cloudy,0,,Saturday,8,Q3,0.22,0
+8/8/2020,17:00,65,74,500,Regular Mass,Cloudy,0,,Saturday,8,Q3,0.13,1
+8/9/2020,6:00,127,134,500,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.254,1
+8/9/2020,8:00,165,165,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.3,1
+8/9/2020,10:00,170,178,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.309,1
+8/9/2020,13:00,45,45,500,Funeral,Rainy,0,,Sunday,8,Q3,0.09,0
+8/9/2020,17:00,119,124,500,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.238,1
+8/11/2020,17:00,67,82,500,Novena,Rainy,0,,Tuesday,8,Q3,0.134,1
+8/13/2020,6:00,45,47,500,Regular Mass,Rainy,0,,Thursday,8,Q3,0.09,1
+8/15/2020,17:00,74,75,500,Regular Mass,Cloudy,0,,Saturday,8,Q3,0.148,1
+8/16/2020,6:00,95,102,500,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.19,1
+8/16/2020,8:00,89,96,550,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.162,1
+8/16/2020,10:00,129,145,550,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.235,1
+8/16/2020,17:00,90,95,500,Sunday Mass,Stormy,0,,Sunday,8,Q3,0.18,1
+8/18/2020,17:00,78,86,500,Novena,Cloudy,0,,Tuesday,8,Q3,0.156,1
+8/20/2020,6:00,52,52,500,Regular Mass,Cloudy,0,,Thursday,8,Q3,0.104,1
+8/22/2020,10:00,107,118,500,Youth Mass,Sunny,0,,Saturday,8,Q3,0.214,0
+8/22/2020,17:00,52,61,500,Regular Mass,Sunny,0,,Saturday,8,Q3,0.104,1
+8/23/2020,6:00,140,144,500,Sunday Mass,Sunny,0,,Sunday,8,Q3,0.28,1
+8/23/2020,8:00,174,199,550,Sunday Mass,Sunny,0,,Sunday,8,Q3,0.316,1
+8/23/2020,10:00,202,209,550,Sunday Mass,Sunny,0,,Sunday,8,Q3,0.367,0
+8/23/2020,17:00,150,167,500,Sunday Mass,Sunny,0,,Sunday,8,Q3,0.3,1
+8/25/2020,17:00,60,63,500,Novena,Rainy,0,,Tuesday,8,Q3,0.12,1
+8/27/2020,6:00,54,59,500,Regular Mass,Rainy,0,,Thursday,8,Q3,0.108,1
+8/29/2020,17:00,48,60,500,Regular Mass,Rainy,0,,Saturday,8,Q3,0.096,1
+8/30/2020,6:00,119,119,500,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.238,1
+8/30/2020,8:00,164,170,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.298,1
+8/30/2020,10:00,194,220,550,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.353,0
+8/30/2020,17:00,138,138,500,Sunday Mass,Rainy,0,,Sunday,8,Q3,0.276,1
+9/1/2020,17:00,62,63,500,Novena,Rainy,0,,Tuesday,9,Q3,0.124,1
+9/3/2020,6:00,51,51,500,Regular Mass,Rainy,0,,Thursday,9,Q3,0.102,1
+9/5/2020,17:00,76,78,500,Regular Mass,Sunny,0,,Saturday,9,Q3,0.152,1
+9/6/2020,6:00,122,122,500,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.244,1
+9/6/2020,8:00,196,212,550,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.356,0
+9/6/2020,10:00,215,239,550,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.391,0
+9/6/2020,17:00,162,171,500,Sunday Mass,Cloudy,0,,Sunday,9,Q3,0.324,1
+9/8/2020,17:00,61,61,500,Novena,Rainy,0,,Tuesday,9,Q3,0.122,1
+9/10/2020,6:00,34,36,500,Regular Mass,Stormy,0,,Thursday,9,Q3,0.068,1
+9/12/2020,10:00,94,97,500,Youth Mass,Cloudy,0,,Saturday,9,Q3,0.188,0
+9/12/2020,15:00,114,114,500,Parish Event,Cloudy,0,,Saturday,9,Q3,0.228,0
+9/12/2020,17:00,61,61,500,Regular Mass,Cloudy,0,,Saturday,9,Q3,0.122,1
+9/13/2020,6:00,106,118,500,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.212,1
+9/13/2020,8:00,195,221,550,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.355,0
+9/13/2020,10:00,206,221,550,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.375,0
+9/13/2020,17:00,174,174,500,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.348,1
+9/15/2020,17:00,43,43,500,Novena,Stormy,0,,Tuesday,9,Q3,0.086,1
+9/17/2020,6:00,58,60,500,Regular Mass,Sunny,0,,Thursday,9,Q3,0.116,1
+9/19/2020,17:00,85,85,500,Regular Mass,Sunny,0,,Saturday,9,Q3,0.17,1
+9/20/2020,6:00,127,139,500,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.254,1
+9/20/2020,8:00,186,192,550,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.338,1
+9/20/2020,10:00,207,230,550,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.376,0
+9/20/2020,17:00,160,174,500,Sunday Mass,Sunny,0,,Sunday,9,Q3,0.32,1
+9/22/2020,17:00,83,95,500,Novena,Sunny,0,,Tuesday,9,Q3,0.166,1
+9/24/2020,6:00,30,34,500,Regular Mass,Rainy,0,,Thursday,9,Q3,0.06,1
+9/26/2020,10:00,98,99,500,Youth Mass,Cloudy,0,,Saturday,9,Q3,0.196,0
+9/26/2020,17:00,63,77,500,Regular Mass,Cloudy,0,,Saturday,9,Q3,0.126,1
+9/27/2020,6:00,104,104,500,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.208,1
+9/27/2020,8:00,115,138,550,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.209,1
+9/27/2020,10:00,119,135,550,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.216,1
+9/27/2020,17:00,111,139,500,Sunday Mass,Stormy,0,,Sunday,9,Q3,0.222,1
+9/29/2020,17:00,67,82,500,Novena,Rainy,0,,Tuesday,9,Q3,0.134,1
+10/1/2020,6:00,55,58,500,Regular Mass,Rainy,0,,Thursday,10,Q4,0.11,1
+10/3/2020,17:00,77,92,500,Regular Mass,Sunny,0,,Saturday,10,Q4,0.154,1
+10/4/2020,6:00,130,135,500,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.26,1
+10/4/2020,8:00,202,202,550,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.367,0
+10/4/2020,10:00,211,237,550,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.384,0
+10/4/2020,17:00,175,195,500,Sunday Mass,Cloudy,0,,Sunday,10,Q4,0.35,0
+10/6/2020,17:00,88,100,500,Novena,Sunny,0,,Tuesday,10,Q4,0.176,1
+10/8/2020,6:00,31,31,500,Regular Mass,Rainy,0,,Thursday,10,Q4,0.062,1
+10/10/2020,10:00,112,114,500,Youth Mass,Sunny,0,,Saturday,10,Q4,0.224,0
+10/10/2020,13:00,63,63,500,Funeral,Sunny,0,,Saturday,10,Q4,0.126,0
+10/10/2020,15:00,104,107,500,Parish Event,Sunny,0,,Saturday,10,Q4,0.208,0
+10/10/2020,17:00,68,81,500,Regular Mass,Sunny,0,,Saturday,10,Q4,0.136,1
+10/11/2020,6:00,119,144,500,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.238,1
+10/11/2020,8:00,154,168,550,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.28,1
+10/11/2020,10:00,180,193,550,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.327,1
+10/11/2020,17:00,120,125,500,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.24,1
+10/13/2020,17:00,44,51,500,Novena,Rainy,0,,Tuesday,10,Q4,0.088,1
+10/15/2020,6:00,58,72,500,Regular Mass,Rainy,0,,Thursday,10,Q4,0.116,1
+10/17/2020,17:00,83,93,500,Regular Mass,Sunny,0,,Saturday,10,Q4,0.166,1
+10/18/2020,6:00,102,102,500,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.204,1
+10/18/2020,8:00,152,152,550,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.276,1
+10/18/2020,10:00,168,175,550,Sunday Mass,Rainy,0,,Sunday,10,Q4,0.305,1
+10/18/2020,17:00,69,71,500,Sunday Mass,Rainy,0,Unexpected local disruption,Sunday,10,Q4,0.138,1
+10/20/2020,17:00,81,81,500,Novena,Cloudy,0,,Tuesday,10,Q4,0.162,1
+10/22/2020,6:00,27,27,500,Regular Mass,Stormy,0,,Thursday,10,Q4,0.054,1
+10/24/2020,10:00,77,77,500,Youth Mass,Rainy,0,,Saturday,10,Q4,0.154,0
+10/24/2020,17:00,58,59,500,Regular Mass,Rainy,0,,Saturday,10,Q4,0.116,1
+10/25/2020,6:00,141,152,500,Sunday Mass,Sunny,0,,Sunday,10,Q4,0.282,1
+10/25/2020,8:00,209,209,550,Sunday Mass,Sunny,0,,Sunday,10,Q4,0.38,0
+10/25/2020,10:00,227,257,550,Sunday Mass,Sunny,0,,Sunday,10,Q4,0.413,0
+10/25/2020,17:00,165,165,500,Sunday Mass,Sunny,0,,Sunday,10,Q4,0.33,1
+10/27/2020,17:00,64,75,500,Novena,Cloudy,0,,Tuesday,10,Q4,0.128,1
+10/29/2020,6:00,37,37,500,Regular Mass,Rainy,0,,Thursday,10,Q4,0.074,1
+10/31/2020,17:00,52,52,500,Regular Mass,Stormy,0,,Saturday,10,Q4,0.104,1
+11/1/2020,6:00,135,148,500,Sunday Mass,Rainy,1,All Saints Day,Sunday,11,Q4,0.27,1
+11/1/2020,8:00,221,239,550,Holiday Mass,Rainy,1,All Saints Day,Sunday,11,Q4,0.402,0
+11/1/2020,8:00,230,252,550,Sunday Mass,Rainy,1,All Saints Day,Sunday,11,Q4,0.418,0
+11/1/2020,10:00,227,241,550,Sunday Mass,Rainy,1,All Saints Day,Sunday,11,Q4,0.413,0
+11/1/2020,17:00,132,138,500,Holiday Mass,Rainy,1,All Saints Day,Sunday,11,Q4,0.264,1
+11/1/2020,17:00,166,182,500,Sunday Mass,Rainy,1,All Saints Day,Sunday,11,Q4,0.332,1
+11/2/2020,8:00,234,257,550,Holiday Mass,Sunny,1,All Souls Day,Monday,11,Q4,0.425,0
+11/2/2020,17:00,218,243,500,Holiday Mass,Sunny,1,All Souls Day,Monday,11,Q4,0.436,0
+11/3/2020,17:00,57,57,500,Novena,Rainy,0,,Tuesday,11,Q4,0.114,1
+11/5/2020,6:00,46,57,500,Regular Mass,Rainy,0,,Thursday,11,Q4,0.092,1
+11/7/2020,17:00,60,66,500,Regular Mass,Cloudy,0,,Saturday,11,Q4,0.12,1
+11/8/2020,6:00,127,151,500,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.254,1
+11/8/2020,8:00,159,169,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.289,1
+11/8/2020,10:00,193,210,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.351,0
+11/8/2020,17:00,143,145,500,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.286,1
+11/10/2020,17:00,54,57,500,Novena,Stormy,0,,Tuesday,11,Q4,0.108,1
+11/12/2020,6:00,49,62,500,Regular Mass,Cloudy,0,,Thursday,11,Q4,0.098,1
+11/14/2020,10:00,64,76,500,Youth Mass,Stormy,0,,Saturday,11,Q4,0.128,0
+11/14/2020,17:00,54,58,500,Regular Mass,Stormy,0,,Saturday,11,Q4,0.108,1
+11/15/2020,6:00,90,105,500,Sunday Mass,Rainy,0,Unexpected local disruption,Sunday,11,Q4,0.18,1
+11/15/2020,8:00,153,159,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.278,1
+11/15/2020,10:00,202,216,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.367,0
+11/15/2020,17:00,109,118,500,Sunday Mass,Rainy,0,Unexpected local disruption,Sunday,11,Q4,0.218,1
+11/17/2020,17:00,64,70,500,Novena,Rainy,0,,Tuesday,11,Q4,0.128,1
+11/19/2020,6:00,55,60,500,Regular Mass,Cloudy,0,,Thursday,11,Q4,0.11,1
+11/21/2020,10:00,84,84,500,Wedding,Cloudy,0,,Saturday,11,Q4,0.168,0
+11/21/2020,17:00,72,73,500,Regular Mass,Cloudy,0,,Saturday,11,Q4,0.144,1
+11/22/2020,6:00,137,144,500,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.274,1
+11/22/2020,8:00,204,204,550,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.371,0
+11/22/2020,9:00,69,78,500,Funeral,Cloudy,0,,Sunday,11,Q4,0.138,0
+11/22/2020,10:00,180,195,550,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.327,1
+11/22/2020,17:00,161,165,500,Sunday Mass,Cloudy,0,,Sunday,11,Q4,0.322,1
+11/24/2020,17:00,64,66,500,Novena,Rainy,0,,Tuesday,11,Q4,0.128,1
+11/26/2020,6:00,60,78,500,Regular Mass,Cloudy,0,,Thursday,11,Q4,0.12,1
+11/26/2020,13:00,41,43,500,Funeral,Cloudy,0,,Thursday,11,Q4,0.082,0
+11/28/2020,10:00,99,104,500,Youth Mass,Sunny,0,,Saturday,11,Q4,0.198,0
+11/28/2020,17:00,70,79,500,Regular Mass,Sunny,0,,Saturday,11,Q4,0.14,1
+11/29/2020,6:00,104,112,500,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.208,1
+11/29/2020,8:00,158,158,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.287,1
+11/29/2020,10:00,217,240,550,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.395,0
+11/29/2020,17:00,110,122,500,Sunday Mass,Rainy,0,,Sunday,11,Q4,0.22,1
+12/1/2020,17:00,71,71,500,Novena,Cloudy,0,Unexpected local disruption,Tuesday,12,Q4,0.142,1
+12/3/2020,6:00,59,66,500,Regular Mass,Rainy,0,,Thursday,12,Q4,0.118,1
+12/5/2020,17:00,72,75,500,Regular Mass,Cloudy,0,,Saturday,12,Q4,0.144,1
+12/6/2020,6:00,137,150,500,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.274,1
+12/6/2020,8:00,216,222,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.393,0
+12/6/2020,10:00,254,264,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.462,0
+12/6/2020,17:00,198,207,500,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.396,0
+12/8/2020,8:00,283,293,550,Holiday Mass,Sunny,1,Feast of the Immaculate Conception,Tuesday,12,Q4,0.515,0
+12/8/2020,17:00,270,282,500,Holiday Mass,Sunny,1,Feast of the Immaculate Conception,Tuesday,12,Q4,0.54,0
+12/8/2020,17:00,119,121,500,Novena,Sunny,1,Feast of the Immaculate Conception,Tuesday,12,Q4,0.238,1
+12/10/2020,6:00,72,79,500,Regular Mass,Cloudy,0,,Thursday,12,Q4,0.144,1
+12/12/2020,10:00,103,103,500,Youth Mass,Rainy,0,,Saturday,12,Q4,0.206,0
+12/12/2020,17:00,70,72,500,Regular Mass,Rainy,0,,Saturday,12,Q4,0.14,1
+12/13/2020,6:00,156,163,500,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.312,1
+12/13/2020,8:00,208,224,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.378,0
+12/13/2020,10:00,257,267,550,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.467,0
+12/13/2020,17:00,195,203,500,Sunday Mass,Cloudy,0,,Sunday,12,Q4,0.39,0
+12/15/2020,17:00,77,79,500,Novena,Cloudy,0,,Tuesday,12,Q4,0.154,1
+12/17/2020,6:00,42,55,500,Regular Mass,Stormy,0,,Thursday,12,Q4,0.084,1
+12/19/2020,17:00,59,68,500,Regular Mass,Cloudy,0,,Saturday,12,Q4,0.118,1
+12/20/2020,6:00,160,171,500,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.32,1
+12/20/2020,8:00,232,240,550,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.422,0
+12/20/2020,10:00,263,283,550,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.478,0
+12/20/2020,17:00,194,216,500,Sunday Mass,Sunny,0,,Sunday,12,Q4,0.388,0
+12/22/2020,17:00,91,100,500,Novena,Rainy,0,,Tuesday,12,Q4,0.182,1
+12/24/2020,6:00,96,96,500,Regular Mass,Cloudy,1,Christmas Eve,Thursday,12,Q4,0.192,1
+12/24/2020,8:00,327,354,550,Holiday Mass,Cloudy,1,Christmas Eve,Thursday,12,Q4,0.595,0
+12/24/2020,17:00,276,287,500,Holiday Mass,Cloudy,1,Christmas Eve,Thursday,12,Q4,0.552,0
+12/25/2020,8:00,307,325,550,Holiday Mass,Rainy,1,Christmas Day,Friday,12,Q4,0.558,0
+12/25/2020,15:00,134,152,500,Wedding,Rainy,1,Christmas Day,Friday,12,Q4,0.268,0
+12/25/2020,17:00,279,299,500,Holiday Mass,Rainy,1,Christmas Day,Friday,12,Q4,0.558,0
+12/26/2020,10:00,135,135,500,Youth Mass,Sunny,0,,Saturday,12,Q4,0.27,0
+12/26/2020,17:00,78,92,500,Regular Mass,Sunny,0,,Saturday,12,Q4,0.156,1
+12/27/2020,6:00,128,147,500,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.256,1
+12/27/2020,8:00,170,183,550,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.309,1
+12/27/2020,10:00,227,233,550,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.413,0
+12/27/2020,17:00,128,142,500,Sunday Mass,Rainy,0,,Sunday,12,Q4,0.256,1
+12/29/2020,17:00,76,83,500,Novena,Cloudy,0,,Tuesday,12,Q4,0.152,1
+12/31/2020,6:00,76,76,500,Regular Mass,Rainy,1,Year-End Thanksgiving Mass,Thursday,12,Q4,0.152,1
+12/31/2020,8:00,242,267,550,Holiday Mass,Rainy,1,Year-End Thanksgiving Mass,Thursday,12,Q4,0.44,0
+12/31/2020,9:00,90,94,500,Funeral,Rainy,1,Year-End Thanksgiving Mass,Thursday,12,Q4,0.18,0
+12/31/2020,17:00,201,213,500,Holiday Mass,Rainy,1,Year-End Thanksgiving Mass,Thursday,12,Q4,0.402,0

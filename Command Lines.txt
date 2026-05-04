@@ -1,0 +1,5 @@
+python -m streamlit run Dashboard.py
+
+python -m streamlit run App.py
+
+python -m streamlit run Command.py
