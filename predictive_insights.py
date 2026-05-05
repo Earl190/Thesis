@@ -2,11 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_absolute_error
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
 from sklearn.model_selection import train_test_split
 import numpy as np
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
-
 
 def prepare_time_series(df):
     if df.empty:
@@ -26,10 +25,9 @@ def prepare_time_series(df):
     ts = ts.sort_values("date")
     return ts
 
-
 def holt_winters_forecast(ts_df, periods=6):
     if len(ts_df) < 24:
-        return pd.DataFrame(columns=["date", "forecast_attendance"]), None
+        return pd.DataFrame(columns=["date", "forecast_attendance"]), None, None, None
 
     ts = ts_df.copy().sort_values("date").reset_index(drop=True)
     
@@ -59,7 +57,10 @@ def holt_winters_forecast(ts_df, periods=6):
     })
     
     mae = mean_absolute_error(ts["attendance"], fitted_model.fittedvalues)
-    return result, mae
+    rmse = np.sqrt(mean_squared_error(ts["attendance"], fitted_model.fittedvalues))
+    mape = mean_absolute_percentage_error(ts["attendance"], fitted_model.fittedvalues)
+    
+    return result, mae, rmse, mape
 
 def show_predictive_insights(filtered_data):
     st.title("Predicted Insights")
@@ -221,10 +222,9 @@ def show_predictive_insights(filtered_data):
         ts_data = prepare_time_series(filtered_data)
         forecast_months = st.slider("Forecast Months Ahead", min_value=3, max_value=12, value=6)
         
-        # Call the new Holt-Winters function
-        forecast_df, forecast_mae = holt_winters_forecast(ts_data, periods=forecast_months)
+        # Call the new Holt-Winters function and unpack 4 metrics
+        forecast_df, forecast_mae, forecast_rmse, forecast_mape = holt_winters_forecast(ts_data, periods=forecast_months)
 
-        # Update the requirement to 24 months
         if len(ts_data) >= 24 and not forecast_df.empty:
             hist_plot = ts_data.rename(columns={"attendance": "value"}).copy()
             hist_plot["series"] = "Historical"
@@ -240,7 +240,7 @@ def show_predictive_insights(filtered_data):
                 ignore_index=True
             )
 
-            c1, c2, c3 = st.columns(3)
+            c1, c2, c3, c4, c5 = st.columns(5)
             c1.metric(
                 "Forecast Horizon",
                 f"{forecast_months} months",
@@ -252,9 +252,19 @@ def show_predictive_insights(filtered_data):
                 help="This shows the latest monthly average attendance from the historical data."
             )
             c3.metric(
-                "Model MAE",
+                "MAE",
                 f"{forecast_mae:.2f}",
                 help="This shows the average forecast error. Lower values mean the forecast is more accurate."
+            )
+            c4.metric(
+                "RMSE",
+                f"{forecast_rmse:.2f}",
+                help="Root Mean Squared Error. Penalizes larger errors more than MAE."
+            )
+            c5.metric(
+                "MAPE",
+                f"{forecast_mape:.2%}",
+                help="Mean Absolute Percentage Error. Shows the average error as a percentage of actual values."
             )
 
             st.info(

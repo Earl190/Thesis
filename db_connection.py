@@ -5,6 +5,7 @@ from sqlalchemy import text
 import numpy as np
 from sqlalchemy import create_engine, text
 from urllib.parse import quote_plus
+import json 
 
 def get_connection_string():
     server = r"EARL\SQLEXPRESS"   
@@ -188,7 +189,7 @@ def create_user(full_name, email, username, password, security_question, securit
             :email,
             :username,
             :password,
-            (SELECT TOP 1 RoleID FROM dbo.Roles WHERE RoleName = 'Staff'), -- ALREADY PERFECT: Defaulting to Staff dynamically
+            (SELECT TOP 1 RoleID FROM dbo.Roles WHERE RoleName = 'Staff'),
             1,
             SYSDATETIME(),
             :security_question,
@@ -252,7 +253,6 @@ def update_password_by_email(email, new_password):
         return False
 
 def upload_csv_data(df):
-    """Uploads Pandas DataFrame to a staging table and processes it into the main normalized tables."""
     engine = get_engine()
     try:
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
@@ -359,3 +359,119 @@ def backup_database():
         return True, backup_file
     except Exception as e:
         return False, str(e)
+    
+def get_service_schedules():
+    engine = get_engine()
+    query = text("""
+        SELECT ServiceName AS name, StartTime AS start, EndTime AS [end], AcknowledgedBy AS acknowledged_by
+        FROM dbo.ServiceSchedules
+        ORDER BY StartTime ASC
+    """)
+    
+    try:
+        with engine.connect() as conn:
+            result = conn.execute(query).mappings().fetchall()
+            schedules = []
+            
+            for row in result:
+                sched = dict(row)
+                
+                # Convert the JSON string back into a Python List
+                if sched.get("acknowledged_by"):
+                    try:
+                        sched["acknowledged_by"] = json.loads(sched["acknowledged_by"])
+                    except:
+                        sched["acknowledged_by"] = []
+                else:
+                    sched["acknowledged_by"] = []
+                    
+                schedules.append(sched)
+            
+            if not schedules:
+                return [
+                    {"name": "Morning Mass", "start": datetime.time(8, 0), "end": datetime.time(9, 0), "acknowledged_by": []},
+                    {"name": "Evening Mass", "start": datetime.time(18, 0), "end": datetime.time(19, 0), "acknowledged_by": []}
+                ]
+            return schedules
+    except Exception as e:
+        return [
+            {"name": "Morning Mass", "start": datetime.time(8, 0), "end": datetime.time(9, 0), "acknowledged_by": []},
+            {"name": "Evening Mass", "start": datetime.time(18, 0), "end": datetime.time(19, 0), "acknowledged_by": []}
+        ]
+
+def save_service_schedules(schedules):
+    engine = get_engine()
+    
+    delete_query = text("DELETE FROM dbo.ServiceSchedules;")
+    
+    # --- UPDATED: Insert query now includes the AcknowledgedBy column ---
+    insert_query = text("""
+        INSERT INTO dbo.ServiceSchedules (ServiceName, StartTime, EndTime, AcknowledgedBy)
+        VALUES (:name, :start, :end, :acknowledged_by)
+    """)
+    
+    try:
+        with engine.begin() as conn:
+            conn.execute(delete_query) 
+            
+            for schedule in schedules:
+                conn.execute(insert_query, {
+                    "name": schedule["name"],
+                    "start": schedule["start"],
+                    "end": schedule["end"],
+                    # JSON.dumps converts ["User1"] into '["User1"]' for SQL Server
+                    "acknowledged_by": json.dumps(schedule.get("acknowledged_by", []))
+                })
+        return True, "Schedules saved to database successfully!"
+    except Exception as e:
+        return False, f"Failed to save schedules: {str(e)}"
+    
+def get_all_users():
+    """Fetches all users for the admin dashboard."""
+    engine = get_engine()
+    query = text("""
+        SELECT 
+            u.UserID, u.FullName, u.Email, u.Username, 
+            u.IsActive, r.RoleName AS Role
+        FROM dbo.Users u
+        INNER JOIN dbo.Roles r ON u.RoleID = r.RoleID
+    """)
+    try:
+        with engine.connect() as conn:
+            result = conn.execute(query).mappings().fetchall()
+            return [dict(row) for row in result]
+    except Exception as e:
+        return []
+
+def toggle_user_status(username, is_active):
+    """Activates (1) or Deactivates (0) a user account."""
+    engine = get_engine()
+    query = text("""
+        UPDATE dbo.Users 
+        SET IsActive = :status 
+        WHERE Username = :username
+    """)
+    try:
+        with engine.begin() as conn:
+            conn.execute(query, {"status": is_active, "username": username})
+        return True
+    except Exception as e:
+        return False
+
+def admin_reset_password(username, new_password):
+    """Allows an admin to force-reset a staff password."""
+    engine = get_engine()
+    query = text("""
+        UPDATE dbo.Users 
+        SET PasswordHash = :new_password 
+        WHERE Username = :username
+    """)
+    try:
+        with engine.begin() as conn:
+            conn.execute(query, {
+                "new_password": new_password,
+                "username": username
+            })
+        return True
+    except Exception as e:
+        return False

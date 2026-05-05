@@ -1,20 +1,48 @@
 import streamlit as st
 import datetime
 import pandas as pd
-from db_connection import backup_database, upload_csv_data, upload_demographic_data
+from db_connection import (
+    backup_database, 
+    upload_csv_data, 
+    upload_demographic_data,
+    get_service_schedules,
+    save_service_schedules
+)
 
 def initialize_settings_state():
     if "max_capacity" not in st.session_state:
         st.session_state.max_capacity = 500
     if "alert_threshold" not in st.session_state:
         st.session_state.alert_threshold = 85
-    if "export_format" not in st.session_state:
-        st.session_state.export_format = "CSV"
+        
     if "service_schedules" not in st.session_state:
-        st.session_state.service_schedules = [
-            {"name": "Morning Mass", "start": datetime.time(8, 0), "end": datetime.time(9, 0)},
-            {"name": "Evening Mass", "start": datetime.time(18, 0), "end": datetime.time(19, 0)}
-        ]
+        st.session_state.service_schedules = get_service_schedules()
+
+def trigger_save():
+    updated_schedules = []
+    for i in range(len(st.session_state.service_schedules)):
+        updated_schedules.append({
+            "name": st.session_state.get(f"name_{i}", st.session_state.service_schedules[i]["name"]),
+            "start": st.session_state.get(f"start_{i}", st.session_state.service_schedules[i]["start"]),
+            "end": st.session_state.get(f"end_{i}", st.session_state.service_schedules[i]["end"])
+        })
+    
+    st.session_state.service_schedules = updated_schedules
+    success, msg = save_service_schedules(updated_schedules)
+    
+    if success:
+        st.toast("Schedules auto-saved!")
+    else:
+        st.toast("Failed to auto-save.")
+
+def delete_schedule(index):
+    deleted_service = st.session_state.service_schedules.pop(index)
+    success, msg = save_service_schedules(st.session_state.service_schedules)
+    
+    if success:
+        st.toast(f"Deleted '{deleted_service['name']}'! 🗑️")
+    else:
+        st.toast("Failed to delete service.")
 
 def show_settings_page():
     initialize_settings_state()
@@ -51,13 +79,17 @@ def show_settings_page():
     st.markdown("Define service times to accurately segment the attendance data collected by the sensors.")
     
     for i, service in enumerate(st.session_state.service_schedules):
-        s_col1, s_col2, s_col3 = st.columns([2, 1, 1])
+        s_col1, s_col2, s_col3, s_col4 = st.columns([2.5, 1, 1, 0.5])
+        
         with s_col1:
-            service["name"] = st.text_input(f"Service Name", value=service["name"], key=f"name_{i}")
+            st.text_input(f"Service Name", value=service["name"], key=f"name_{i}", on_change=trigger_save)
         with s_col2:
-            service["start"] = st.time_input(f"Start Time", value=service["start"], key=f"start_{i}")
+            st.time_input(f"Start Time", value=service["start"], key=f"start_{i}", on_change=trigger_save)
         with s_col3:
-            service["end"] = st.time_input(f"End Time", value=service["end"], key=f"end_{i}")
+            st.time_input(f"End Time", value=service["end"], key=f"end_{i}", on_change=trigger_save)
+        with s_col4:
+            st.markdown("<div style='margin-top: 28px;'></div>", unsafe_allow_html=True)
+            st.button("🗑️", key=f"del_{i}", help="Delete this schedule", on_click=delete_schedule, args=(i,))
 
     if st.button("Add Another Service"):
         st.session_state.service_schedules.append({
@@ -65,18 +97,11 @@ def show_settings_page():
             "start": datetime.time(12, 0), 
             "end": datetime.time(13, 0)
         })
+        success, msg = save_service_schedules(st.session_state.service_schedules)
+        if success:
+            st.toast("New service added and auto-saved!")
         st.rerun()
-    st.divider()
-
-    st.header("Data Export Preferences")
-    st.markdown("Select the default file format for downloading attendance reports and predictive insights.")
-    
-    st.session_state.export_format = st.radio(
-        "Default Export Format",
-        options=["CSV", "Excel (.xlsx)"],
-        index=0 if st.session_state.export_format == "CSV" else 1,
-        horizontal=True
-    )
+        
     st.divider()
 
     st.header("Database & Sensor Management")
@@ -114,6 +139,9 @@ def show_settings_page():
                     if success:
                         st.success(f"Successfully processed {len(df)} records!")
                         st.caption(msg)
+                        
+                        st.cache_data.clear()
+                        
                     else:
                         st.error("Upload failed.")
                         st.error(msg)

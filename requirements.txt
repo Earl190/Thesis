@@ -1,14 +1,9 @@
 streamlit
 pandas
 scikit-learn
-pandas
 numpy
-plotly.express
-datetime
-streamlit_autorefresh
-db_connection
+plotly
+streamlit-autorefresh
 pyodbc
-datetime
 sqlalchemy
-urllib.parse
-statsmodels.tsa.holtwinters
+statsmodels

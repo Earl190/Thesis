@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-
 def show_scheduling_page(filtered_data):
     st.title("Service & Event Scheduling")
     st.markdown("Plan church services and events based on attendance patterns and predicted demand.")

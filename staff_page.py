@@ -1,6 +1,27 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from db_connection import get_service_schedules, save_service_schedules 
+
+# --- CALLBACK FUNCTION: Safely handles the database save before Streamlit redraws ---
+def handle_acknowledgment(sched_name, user_name):
+    # Fetch fresh from DB
+    db_schedules = get_service_schedules()
+    
+    # Find and update the specific schedule
+    for sched in db_schedules:
+        if sched.get("name") == sched_name:
+            if "acknowledged_by" not in sched:
+                sched["acknowledged_by"] = []
+                
+            if user_name not in sched["acknowledged_by"]:
+                sched["acknowledged_by"].append(user_name)
+    
+    # Save back to DB
+    save_service_schedules(db_schedules)
+    
+    # Clear cache to force Streamlit to fetch the new DB data on redraw
+    st.cache_data.clear()
 
 def show_staff_dashboard(data):
     st.title("Church Staff Portal")
@@ -8,6 +29,44 @@ def show_staff_dashboard(data):
     current_name = st.session_state.get("current_user_name", "Staff Member")
     st.markdown(f"Welcome, **{current_name}**. Here is the recent attendance overview.")
     
+    # --- FETCH AND SORT SCHEDULES ---
+    db_schedules = get_service_schedules()
+    
+    unacknowledged_schedules = []
+    acknowledged_schedules = []
+    
+    for sched in db_schedules:
+        if "acknowledged_by" not in sched:
+            sched["acknowledged_by"] = []
+            
+        if current_name not in sched["acknowledged_by"]:
+            unacknowledged_schedules.append(sched)
+        else:
+            acknowledged_schedules.append(sched)
+
+    # --- SIDEBAR: PENDING SCHEDULES ---
+    st.sidebar.divider()
+    st.sidebar.subheader("📢 Pending Acknowledgments")
+    
+    if unacknowledged_schedules:
+        st.sidebar.warning(f"You have {len(unacknowledged_schedules)} pending tasks.")
+        for sched in unacknowledged_schedules:
+            with st.sidebar.expander(f"⚠️ {sched['name']}", expanded=True):
+                st.write(f"**Time:** {sched['start']} - {sched['end']}")
+                st.write("Ensure monitoring systems are prepared.")
+                
+                # Using on_click callback to prevent silent failures
+                st.button(
+                    "Acknowledge", 
+                    key=f"ack_{sched['name']}",
+                    on_click=handle_acknowledgment,
+                    args=(sched['name'], current_name),
+                    use_container_width=True
+                )
+    else:
+        st.sidebar.success("✅ You are caught up! No new schedules.")
+        
+    # --- SIDEBAR: FILTERS ---
     st.sidebar.divider()
     st.sidebar.header("Dashboard Filters")
 
@@ -37,6 +96,27 @@ def show_staff_dashboard(data):
 
     st.divider()
 
+    # --- MAIN VIEW: ACKNOWLEDGMENT HISTORY TABLE ---
+    st.subheader("📋 Acknowledgment History")
+    if acknowledged_schedules:
+        history_records = []
+        for sched in acknowledged_schedules:
+            history_records.append({
+                "Event Name": sched.get("name", "Unknown"),
+                "Start Time": sched.get("start", "N/A"),
+                "End Time": sched.get("end", "N/A"),
+                "Acknowledged By": ", ".join(sched.get("acknowledged_by", []))
+            })
+        
+        df_history = pd.DataFrame(history_records)
+        st.dataframe(df_history, use_container_width=True, hide_index=True)
+    else:
+        st.info("You haven't acknowledged any schedules yet.")
+
+    st.divider()
+
+    # --- MAIN VIEW: METRICS ---
+    st.subheader("📊 Attendance Overview")
     col1, col2, col3 = st.columns(3)
     
     avg_attendance = int(filtered_data["attendance"].mean()) if not filtered_data.empty else 0
@@ -57,6 +137,7 @@ def show_staff_dashboard(data):
         st.info("No attendance data available for the selected filters.")
         return
 
+    # --- MAIN VIEW: CHARTS ---
     left_col, right_col = st.columns(2)
 
     with left_col:
@@ -89,8 +170,8 @@ def show_staff_dashboard(data):
 
     st.divider()
 
-    
-    st.subheader("Recent Automated Sensor Logs")
+    # --- MAIN VIEW: SENSOR LOGS ---
+    st.subheader("📡 Recent Automated Sensor Logs")
     st.caption("Data is logged automatically. Contact the System Administrator for any discrepancies.")
     
     available_cols = filtered_data.columns.tolist()

@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import numpy as np 
 
 from db_connection import upload_csv_data
 
@@ -41,7 +42,6 @@ def show_sensor_page():
 
     sensor_col, alert_col = st.columns([1, 2])
 
-
     st.divider()
     st.subheader("Database Synchronization")
     st.caption("Push the finalized simulation data to SQL Server. This makes it available to your sidebar filters and historical dashboards.")
@@ -56,7 +56,15 @@ def show_sensor_page():
             final_record_df["mass_time"] = st.session_state.selected_mass_time
             final_record_df["event_type"] = st.session_state.selected_event_type
             
-            # Push directly to db_connection.py
+           
+            foot_traffic = final_record_df["foot_traffic_count"].iloc[0]
+            
+            noise_factor = np.random.normal(loc=0.95, scale=0.04)
+            
+            noise_factor = min(1.0, max(0.80, noise_factor))
+            
+            final_record_df["attendance"] = int(foot_traffic * noise_factor)
+            
             success, msg = upload_csv_data(final_record_df)
             
             if success:
@@ -140,7 +148,7 @@ def show_sensor_page():
                 y="arrivals",
                 title="Sensor Detections per Minute (Arrival Rate)",
                 labels={
-                    "simulated_time": "Minutes relative to Service Start (0)",
+                    "sim_time": "Minutes relative to Service Start (0)",
                     "arrivals": "People Entering"
                 },
             )

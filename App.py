@@ -2,9 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+
 from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
-
+from user_management import show_user_management_page
 from auth import initialize_auth_state, show_auth_screen
 from predictive_insights import show_predictive_insights
 from sensor_page import show_sensor_page
@@ -158,7 +159,7 @@ st.sidebar.title("Navigation Bar")
 
 current_name = st.session_state.current_user_name or "User"
 st.sidebar.success(f"Logged in as: {current_name}")
-st.sidebar.warning("Role: Administrator") # Added Admin tag
+st.sidebar.warning("Role: Administrator") 
 
 if st.sidebar.button("Log Out", use_container_width=True):
     st.session_state.logged_in = False
@@ -176,6 +177,7 @@ page = st.sidebar.radio(
         "Predicted Insights",
         "Service & Event Scheduling",
         "Reports and Exports",
+        "User Management",
         "Settings"
     ],
 )
@@ -296,6 +298,9 @@ elif page == "Service & Event Scheduling":
 
 elif page == "Reports and Exports":
     show_reports_page(filtered_data, monthly_data)
+
+elif page == "User Management":            
+       show_user_management_page()
 
 elif page == "Settings":
     show_settings_page()
