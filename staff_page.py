@@ -54,7 +54,7 @@ def show_staff_dashboard(data):
                     key=f"ack_{sched['name']}",
                     on_click=handle_acknowledgment,
                     args=(sched['name'], current_name),
-                    use_container_width=True
+                    width='stretch'
                 )
     else:
         st.sidebar.success("✅ You are caught up! No new schedules.")
@@ -118,7 +118,7 @@ def show_staff_dashboard(data):
                 })
             
             df_history = pd.DataFrame(history_records)
-            st.dataframe(df_history, use_container_width=True, hide_index=True)
+            st.dataframe(df_history, width='stretch', hide_index=True)
         else:
             st.info("You haven't acknowledged any schedules yet.")
 
@@ -143,7 +143,7 @@ def show_staff_dashboard(data):
                 markers=True
             )
             fig_line.update_layout(height=400)
-            st.plotly_chart(fig_line, use_container_width=True)
+            st.plotly_chart(fig_line, width='stretch')
 
         with right_col:
             st.caption("Attendance by Event Type")
@@ -155,7 +155,7 @@ def show_staff_dashboard(data):
                     y="attendance"
                 )
                 fig_bar.update_layout(height=400)
-                st.plotly_chart(fig_bar, use_container_width=True)
+                st.plotly_chart(fig_bar, width='stretch')
             else:
                 st.info("Event type data not available.")
 
@@ -169,4 +169,4 @@ def show_staff_dashboard(data):
         
         staff_df = filtered_data[display_cols].sort_values("date", ascending=False).head(50) 
         
-        st.dataframe(staff_df, use_container_width=True, hide_index=True)
+        st.dataframe(staff_df, width='stretch', hide_index=True)

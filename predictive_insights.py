@@ -198,7 +198,7 @@ def show_predictive_insights(filtered_data):
                 yaxis_title="Attendance"
             )
 
-            st.plotly_chart(scatter_fig, use_container_width=True)
+            st.plotly_chart(scatter_fig, width='stretch')
 
             st.subheader("Actual vs Predicted Test Results")
             test_results = pd.DataFrame({
@@ -210,7 +210,7 @@ def show_predictive_insights(filtered_data):
             st.caption(
                 "This table compares actual attendance and predicted attendance using only the testing dataset."
             )
-            st.dataframe(test_results, use_container_width=True)
+            st.dataframe(test_results, width='stretch')
 
             st.subheader("Prediction Tool")
             st.caption(
@@ -320,7 +320,7 @@ def show_predictive_insights(filtered_data):
                 yaxis_title="Attendance"
             )
 
-            st.plotly_chart(fig_forecast, use_container_width=True)
+            st.plotly_chart(fig_forecast, width='stretch')
 
             upcoming_low = forecast_df[
                 forecast_df["forecast_attendance"] < max(ts_data["attendance"].median() * 0.75, 1)
@@ -337,6 +337,6 @@ def show_predictive_insights(filtered_data):
                 st.success("Forecast does not currently indicate a low-attendance month.")
 
             st.caption("Forecast table showing the estimated attendance for the upcoming months.")
-            st.dataframe(forecast_df, use_container_width=True)
+            st.dataframe(forecast_df, width='stretch')
         else:
             st.warning("At least 24 months of attendance history are needed for Holt-Winters time-series forecasting.")

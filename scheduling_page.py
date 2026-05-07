@@ -90,7 +90,7 @@ def show_scheduling_page(filtered_data):
                     "<b>Average Attendance:</b> %{y:.0f}<br>"
                     "<extra></extra>"
                 )
-                st.plotly_chart(fig_day, use_container_width=True)
+                st.plotly_chart(fig_day, width='stretch')
             else:
                 st.info("No day-based data available.")
 
@@ -111,7 +111,7 @@ def show_scheduling_page(filtered_data):
                     "<b>Average Attendance:</b> %{y:.0f}<br>"
                     "<extra></extra>"
                 )
-                st.plotly_chart(fig_time, use_container_width=True)
+                st.plotly_chart(fig_time, width='stretch')
             else:
                 st.info("No service time data available.")
 
@@ -147,7 +147,7 @@ def show_scheduling_page(filtered_data):
                     "<b>Average Attendance:</b> %{y:.0f}<br>"
                     "<extra></extra>"
                 )
-                st.plotly_chart(fig_event, use_container_width=True)
+                st.plotly_chart(fig_event, width='stretch')
             else:
                 st.info("No event type data available.")
         else:
@@ -230,4 +230,4 @@ def show_scheduling_page(filtered_data):
             "Capacity": [max_capacity]
         })
 
-        st.dataframe(planner_df, use_container_width=True)
+        st.dataframe(planner_df, width='stretch')

@@ -17,7 +17,7 @@ def show_user_management_page():
             # Display user table 
             display_df = df_users[["FullName", "Username", "Email", "Role", "IsActive"]].copy()
             display_df["Status"] = display_df["IsActive"].apply(lambda x: "🟢 Active" if x else "🔴 Inactive")
-            st.dataframe(display_df.drop(columns=["IsActive"]), use_container_width=True)
+            st.dataframe(display_df.drop(columns=["IsActive"]), width='stretch')
             
             st.divider()
             st.subheader("Account Status Control")
@@ -31,14 +31,14 @@ def show_user_management_page():
             with col2:
                 st.markdown("<br>", unsafe_allow_html=True) # alignment spacing
                 if current_status == 1:
-                    if st.button("Deactivate Account", type="primary", use_container_width=True):
+                    if st.button("Deactivate Account", type="primary", width='stretch'):
                         if toggle_user_status(selected_user, 0):
                             st.success(f"Account '{selected_user}' has been deactivated. They can no longer log in.")
                             st.rerun()
                         else:
                             st.error("Failed to update SSMS database.")
                 else:
-                    if st.button("Reactivate Account", use_container_width=True):
+                    if st.button("Reactivate Account", width='stretch'):
                         if toggle_user_status(selected_user, 1):
                             st.success(f"Account '{selected_user}' is now active again.")
                             st.rerun()

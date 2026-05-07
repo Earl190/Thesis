@@ -64,6 +64,9 @@ def show_sensor_page():
             if success:
                 st.success(f"Data synced directly to database! {msg}")
                 st.info("The main dashboard sidebar filters will now detect this event upon refresh.")
+                
+                # --- NEW CHANGE: Clear the data cache so main dashboards update instantly ---
+                st.cache_data.clear()
             else:
                 st.error(f"Database sync failed: {msg}")
         else:
@@ -99,7 +102,6 @@ def show_sensor_page():
                 st.session_state.sensor_increments = []
                 st.session_state.sim_time_minutes = -60
 
-        # Create empty placeholders for UI elements to overwrite without flickering
         live_count_placeholder = st.empty()
         timeline_placeholder = st.empty()
 
@@ -110,13 +112,11 @@ def show_sensor_page():
         bar_chart_placeholder = st.empty()
         line_chart_placeholder = st.empty()
 
-    # --- RENDER UI FUNCTION ---
     def update_ui_placeholders():
         max_cap = st.session_state.get('max_capacity', 500)
         current_count = st.session_state.get('live_count', 0)
         current_time = st.session_state.get('sim_time_minutes', -60)
         
-        # 1. Update Metrics
         live_count_placeholder.metric(
             "Live Occupancy Count",
             f"{current_count} / {max_cap}",
@@ -126,7 +126,6 @@ def show_sensor_page():
         sim_time_str = f"T {current_time} mins" if current_time <= 0 else f"T +{current_time} mins"
         timeline_placeholder.metric("Simulation Timeline", sim_time_str)
 
-        # 2. Update Alerts
         occupancy_rate = (current_count / max_cap) if max_cap > 0 else 0
         with alert_placeholder.container():
             if occupancy_rate >= 1.0:
@@ -210,14 +209,10 @@ def show_sensor_page():
                     "weather_condition": "Clear",
                 })
                 
-                # Advance time for the next loop
                 st.session_state.sim_time_minutes += 1
             else:
-                # Stop simulation if time limit is reached
                 st.session_state.simulation_running = False
 
-            # Refresh the UI placeholders with the new math we just calculated
             update_ui_placeholders()
             
-            # Wait half a second before looping again so the UI doesn't crash
             time.sleep(0.5)

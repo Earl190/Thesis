@@ -16,7 +16,6 @@ from staff_page import show_staff_dashboard
 
 st.set_page_config(page_title="Church Attendance Monitoring System (CAMS)", layout="wide")
 
-# --- INITIALIZE SESSION STATE ---
 if "live_count" not in st.session_state:
     st.session_state.live_count = 0
 if "max_capacity" not in st.session_state:
@@ -86,23 +85,26 @@ def prepare_aggregated_data(df):
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date")
 
+    # ADDED .round(0) here to fix the daily averages
     daily_data = (
         df.groupby(df["date"].dt.date)
         .agg({"attendance": "mean", "foot_traffic_count": "mean", "capacity": "mean"})
+        .round(0) 
         .reset_index()
     )
     daily_data["date"] = pd.to_datetime(daily_data["date"])
 
+    # ADDED .round(0) here to fix the monthly averages shown in your screenshot
     monthly_data = (
         df.groupby(df["date"].dt.to_period("M"))
         .agg({"attendance": "mean", "foot_traffic_count": "mean", "capacity": "mean"})
+        .round(0) 
         .reset_index()
     )
     monthly_data["date"] = monthly_data["date"].astype(str)
 
     return daily_data, monthly_data
 
-# --- ROUTING CONTROLLER ---
 if not st.session_state.logged_in:
     if st.session_state.get("needs_setup", False):
         show_first_time_setup()
@@ -115,7 +117,7 @@ if st.session_state.get("role") == "Staff":
     st.sidebar.success(f"Logged in as: {st.session_state.current_user_name}")
     st.sidebar.info("Role: Church Staff")
     
-    if st.sidebar.button("Log Out", use_container_width=True):
+    if st.sidebar.button("Log Out", width='stretch'):
         st.session_state.logged_in = False
         st.session_state.needs_setup = False
         st.session_state.current_user = None
@@ -134,7 +136,7 @@ current_name = st.session_state.current_user_name or "User"
 st.sidebar.success(f"Logged in as: {current_name}")
 st.sidebar.warning("Role: Administrator") 
 
-if st.sidebar.button("Log Out", use_container_width=True):
+if st.sidebar.button("Log Out", width='stretch'):
     st.session_state.logged_in = False
     st.session_state.needs_setup = False
     st.session_state.current_user = None
@@ -218,7 +220,7 @@ if page == "HOME":
             monthly_data, x="date", y="attendance", markers=True,
             title="Monthly Average Attendance Overview",
         )
-        st.plotly_chart(fig_home, use_container_width=True)
+        st.plotly_chart(fig_home, width='stretch')
     else:
         st.info("No data available for the selected filters.")
 
@@ -241,12 +243,12 @@ elif page == "Attendance Records":
 
         with top1:
             fig_daily = px.line(daily_data, x="date", y="attendance", markers=True, title="Daily Attendance Trend")
-            st.plotly_chart(fig_daily, use_container_width=True)
+            st.plotly_chart(fig_daily, width='stretch')
 
         with top2:
             event_summary = filtered_data.groupby("event_type", as_index=False)["attendance"].mean().sort_values("attendance", ascending=False)
             fig_event = px.bar(event_summary, x="event_type", y="attendance", title="Average Attendance by Event Type")
-            st.plotly_chart(fig_event, use_container_width=True)
+            st.plotly_chart(fig_event, width='stretch')
 
         bottom1, bottom2 = st.columns(2)
 
@@ -256,11 +258,11 @@ elif page == "Attendance Records":
             dow_summary["day_of_week"] = pd.Categorical(dow_summary["day_of_week"], categories=order, ordered=True)
             dow_summary = dow_summary.sort_values("day_of_week")
             fig_dow = px.bar(dow_summary, x="day_of_week", y="attendance", title="Average Attendance by Day")
-            st.plotly_chart(fig_dow, use_container_width=True)
+            st.plotly_chart(fig_dow, width='stretch')
 
         with bottom2:
             display_cols = [c for c in ["date", "mass_time", "event_type", "attendance", "foot_traffic_count", "capacity", "weather_condition", "holiday_flag"] if c in filtered_data.columns]
-            st.dataframe(filtered_data[display_cols].sort_values("date", ascending=False), use_container_width=True)
+            st.dataframe(filtered_data[display_cols].sort_values("date", ascending=False), width='stretch', hide_index=True)
 
 elif page == "Sensor":
     show_sensor_page()

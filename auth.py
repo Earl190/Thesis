@@ -66,7 +66,7 @@ def show_auth_screen():
         st.subheader("System Login")
         login_username = st.text_input("Username")
         login_password = st.text_input("Password", type="password")
-        login_btn = st.form_submit_button("Log In", use_container_width=True)
+        login_btn = st.form_submit_button("Log In", width='stretch')
 
         if login_btn:
             user = get_user_by_username(login_username)
@@ -112,7 +112,7 @@ def show_first_time_setup():
         ])
         new_answer = st.text_input("Your Secret Answer", type="password")
         
-        submit_setup = st.form_submit_button("Save & Continue", use_container_width=True)
+        submit_setup = st.form_submit_button("Save & Continue", width='stretch')
         
         if submit_setup:
             if new_pw != confirm_pw:

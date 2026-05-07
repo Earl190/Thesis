@@ -22,13 +22,13 @@ def show_reports_page(filtered_data, monthly_data):
             export_df = monthly_data.copy()
             
         else:
-            # FIX: Catch all returned values into a single variable to avoid unpack errors
+            export_months = st.slider("Months to Forecast for Export", min_value=3, max_value=12, value=6)
+            
             forecast_results = holt_winters_forecast(
                 prepare_time_series(filtered_data),
-                periods=6
+                periods=export_months
             )
             
-            # Extract the DataFrame (it is almost always the first item in the tuple)
             if isinstance(forecast_results, tuple):
                 forecast_df = forecast_results[0]
             else:
@@ -40,12 +40,17 @@ def show_reports_page(filtered_data, monthly_data):
                 else pd.DataFrame(columns=["date", "forecast_attendance"])
             )
 
-        st.dataframe(export_df, use_container_width=True)
+        st.dataframe(export_df, width='stretch', hide_index=True)
+
+        if report_choice == "Forecast Summary":
+            file_name_export = "simulated_2026_forecast.csv"
+        else:
+            file_name_export = "church_attendance_data.csv"
 
         csv = export_df.to_csv(index=False).encode("utf-8")
         st.download_button(
-            label="Download Attendance Data as CSV",
+            label=f"Download {report_choice} Data as CSV",
             data=csv,
-            file_name="church_attendance_data.csv",
+            file_name=file_name_export,
             mime="text/csv",
         )

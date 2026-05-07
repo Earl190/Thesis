@@ -151,7 +151,7 @@ def show_settings_page():
     db_col1, db_col2, db_col3 = st.columns(3)
     
     with db_col1:
-        if st.button("Trigger Manual Backup", use_container_width=True):
+        if st.button("Trigger Manual Backup", width='stretch'):
             with st.spinner("Executing SQL Server Backup..."):
                 success, message = backup_database()
                 if success:
@@ -162,7 +162,7 @@ def show_settings_page():
                     st.error(f"Details: {message}")
             
     with db_col2:
-        if st.button("Clear Live Sensor Cache", use_container_width=True):
+        if st.button("Clear Live Sensor Cache", width='stretch'):
             st.session_state.sensor_log = []
             st.session_state.sensor_increments = []
             st.session_state.live_count = 0
@@ -170,6 +170,6 @@ def show_settings_page():
             st.toast("Live sensor cache cleared.")
 
     with db_col3:
-        if st.button("Factory Reset Database", type="primary", use_container_width=True):
+        if st.button("Factory Reset Database", type="primary", width='stretch'):
             st.session_state.sensor_log = []
             st.toast("Database reset to factory defaults. All unsaved data lost.")
