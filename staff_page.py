@@ -23,7 +23,6 @@ def show_staff_dashboard(data):
     current_name = st.session_state.get("current_user_name", "Staff Member")
     st.markdown(f"Welcome, **{current_name}**. Here is the recent attendance overview.")
     
-    # --- FETCH AND SORT SCHEDULES ---
     db_schedules = get_service_schedules()
     
     unacknowledged_schedules = []
@@ -38,9 +37,8 @@ def show_staff_dashboard(data):
         else:
             acknowledged_schedules.append(sched)
 
-    # --- SIDEBAR: PENDING SCHEDULES ---
     st.sidebar.divider()
-    st.sidebar.subheader("📢 Pending Acknowledgments")
+    st.sidebar.subheader("Pending Acknowledgments")
     
     if unacknowledged_schedules:
         st.sidebar.warning(f"You have {len(unacknowledged_schedules)} pending tasks.")
@@ -57,7 +55,7 @@ def show_staff_dashboard(data):
                     width='stretch'
                 )
     else:
-        st.sidebar.success("✅ You are caught up! No new schedules.")
+        st.sidebar.success("You are caught up! No new schedules.")
         
     # --- SIDEBAR: FILTERS ---
     st.sidebar.divider()
@@ -89,7 +87,7 @@ def show_staff_dashboard(data):
 
     # --- MAIN VIEW: METRICS ---
     with st.container(border=True):
-        st.subheader("📊 Attendance Overview")
+        st.subheader("Attendance Overview")
         col1, col2, col3 = st.columns(3)
         
         avg_attendance = int(filtered_data["attendance"].mean()) if not filtered_data.empty else 0
@@ -104,9 +102,8 @@ def show_staff_dashboard(data):
         col2.metric("Highest Recorded", max_attendance)
         col3.metric("Latest Event Logged", latest_event)
 
-    # --- MAIN VIEW: ACKNOWLEDGMENT HISTORY TABLE ---
     with st.container(border=True):
-        st.subheader("📋 Acknowledgment History")
+        st.subheader("Acknowledgment History")
         if acknowledged_schedules:
             history_records = []
             for sched in acknowledged_schedules:
@@ -128,7 +125,7 @@ def show_staff_dashboard(data):
 
     # --- MAIN VIEW: CHARTS ---
     with st.container(border=True):
-        st.subheader("📈 Attendance Trends")
+        st.subheader("Attendance Trends")
         left_col, right_col = st.columns(2)
 
         with left_col:
@@ -161,7 +158,7 @@ def show_staff_dashboard(data):
 
     # --- MAIN VIEW: SENSOR LOGS ---
     with st.container(border=True):
-        st.subheader("📡 Recent Automated Sensor Logs")
+        st.subheader("Recent Automated Sensor Logs")
         st.caption("Data is logged automatically. Contact the System Administrator for any discrepancies.")
         
         available_cols = filtered_data.columns.tolist()

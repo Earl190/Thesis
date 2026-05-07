@@ -27,7 +27,7 @@ def prepare_time_series(df):
 
 def holt_winters_forecast(ts_df, periods=6):
     if len(ts_df) < 24:
-        return pd.DataFrame(columns=["date", "forecast_attendance"]), None, None, None
+        return pd.DataFrame(columns=["date", "forecast_attendance"]), None, None, None, None
 
     ts = ts_df.copy().sort_values("date").reset_index(drop=True)
     ts["attendance"] = ts["attendance"].astype(float)
@@ -64,11 +64,13 @@ def holt_winters_forecast(ts_df, periods=6):
         mae = mean_absolute_error(test_ts["attendance"], eval_forecast)
         rmse = np.sqrt(mean_squared_error(test_ts["attendance"], eval_forecast))
         mape = mean_absolute_percentage_error(test_ts["attendance"], eval_forecast)
+        r2 = r2_score(test_ts["attendance"], eval_forecast)
     else:
         # Fallback: In-sample testing (Static metrics) to prevent crashes
         mae = mean_absolute_error(ts["attendance"], final_model.fittedvalues)
         rmse = np.sqrt(mean_squared_error(ts["attendance"], final_model.fittedvalues))
         mape = mean_absolute_percentage_error(ts["attendance"], final_model.fittedvalues)
+        r2 = r2_score(ts["attendance"], final_model.fittedvalues)
 
     # -------------------------------------------------------------------
     # FORECAST PHASE: Predicting the actual future
@@ -87,7 +89,7 @@ def holt_winters_forecast(ts_df, periods=6):
         "forecast_attendance": forecast_values.values.round(0)
     })
     
-    return result, mae, rmse, mape
+    return result, mae, rmse, mape, r2
 
 def show_predictive_insights(filtered_data):
     st.title("Predicted Insights")
@@ -115,8 +117,10 @@ def show_predictive_insights(filtered_data):
             y_pred_test = model.predict(X_test)
             r2 = r2_score(y_test, y_pred_test)
             mae = mean_absolute_error(y_test, y_pred_test)
+            rmse = np.sqrt(mean_squared_error(y_test, y_pred_test))
+            mape = mean_absolute_percentage_error(y_test, y_pred_test)
 
-            col1, col2, col3, col4 = st.columns(4)
+            col1, col2, col3, col4, col5, col6 = st.columns(6)
             col1.metric(
                 "Slope",
                 f"{model.coef_[0]:.2f}",
@@ -136,6 +140,16 @@ def show_predictive_insights(filtered_data):
                 "MAE",
                 f"{mae:.2f}",
                 help="Mean Absolute Error on the test data. Lower values mean better prediction accuracy."
+            )
+            col5.metric(
+                "RMSE",
+                f"{rmse:.2f}",
+                help="Root Mean Squared Error on the test data. Penalizes larger errors more than MAE."
+            )
+            col6.metric(
+                "MAPE",
+                f"{mape:.2%}",
+                help="Mean Absolute Percentage Error on the test data. Shows the average error as a percentage of actual values."
             )
 
             st.caption(
@@ -249,8 +263,8 @@ def show_predictive_insights(filtered_data):
         ts_data = prepare_time_series(filtered_data)
         forecast_months = st.slider("Forecast Months Ahead", min_value=3, max_value=12, value=6)
         
-        # Call the new Holt-Winters function and unpack 4 metrics
-        forecast_df, forecast_mae, forecast_rmse, forecast_mape = holt_winters_forecast(ts_data, periods=forecast_months)
+        # Call the new Holt-Winters function and unpack 5 metrics
+        forecast_df, forecast_mae, forecast_rmse, forecast_mape, forecast_r2 = holt_winters_forecast(ts_data, periods=forecast_months)
 
         if len(ts_data) >= 24 and not forecast_df.empty:
             hist_plot = ts_data.rename(columns={"attendance": "value"}).copy()
@@ -267,7 +281,7 @@ def show_predictive_insights(filtered_data):
                 ignore_index=True
             )
 
-            c1, c2, c3, c4, c5 = st.columns(5)
+            c1, c2, c3, c4, c5, c6 = st.columns(6)
             c1.metric(
                 "Forecast Horizon",
                 f"{forecast_months} months",
@@ -292,6 +306,11 @@ def show_predictive_insights(filtered_data):
                 "MAPE",
                 f"{forecast_mape:.2%}",
                 help="Mean Absolute Percentage Error. Shows the average error as a percentage of actual values."
+            )
+            c6.metric(
+                "R² Score",
+                f"{forecast_r2:.3f}",
+                help="Coefficient of Determination. Evaluates how well the forecast matches actual trends."
             )
 
             st.info(
