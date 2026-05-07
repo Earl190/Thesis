@@ -1,27 +1,23 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import numpy as np 
+import time
+from datetime import datetime
 
 from db_connection import upload_csv_data
 
 def get_live_sensor_data():
-    if not st.session_state.sensor_log:
+    # If there's no data yet, return an empty DataFrame with the correct columns
+    if not st.session_state.get("sensor_log"):
         return pd.DataFrame(
             columns=[
-                "date",
-                "sim_time",
-                "mass_time",
-                "attendance",
-                "foot_traffic_count",
-                "capacity",
-                "event_type",
-                "year",
-                "holiday_flag",
-                "weather_condition",
+                "date", "sim_time", "mass_time", "attendance",
+                "foot_traffic_count", "capacity", "event_type",
+                "year", "holiday_flag", "weather_condition",
             ]
         )
 
+    # Convert session state log to DataFrame
     df = pd.DataFrame(st.session_state.sensor_log)
     df["date"] = pd.to_datetime(df["date"])
     df["year"] = df["date"].dt.year
@@ -29,12 +25,14 @@ def get_live_sensor_data():
     df["day_of_week"] = df["date"].dt.day_name()
     df["is_weekend"] = df["date"].dt.dayofweek.isin([5, 6]).astype(int)
 
+    # Fill missing columns with defaults
     if "holiday_flag" not in df.columns:
         df["holiday_flag"] = 0
     if "weather_condition" not in df.columns:
         df["weather_condition"] = "Unknown"
 
     return df
+
 
 def show_sensor_page():
     st.title("Live Sensor Feed & Alert System")
@@ -46,21 +44,17 @@ def show_sensor_page():
     st.subheader("Database Synchronization")
     st.caption("Push the finalized simulation data to SQL Server. This makes it available to your sidebar filters and historical dashboards.")
 
+    # --- DATABASE SYNC BUTTON ---
     if st.button("Sync Final Data to Database", type="primary"):
         final_live_df = get_live_sensor_data()
         
         if not final_live_df.empty:
-            
             final_record_df = final_live_df.tail(1).copy()
-            
-            final_record_df["mass_time"] = st.session_state.selected_mass_time
-            final_record_df["event_type"] = st.session_state.selected_event_type
-            
+            final_record_df["mass_time"] = st.session_state.get("selected_mass_time", "08:00")
+            final_record_df["event_type"] = st.session_state.get("selected_event_type", "Regular Mass")
            
             foot_traffic = final_record_df["foot_traffic_count"].iloc[0]
-            
             noise_factor = np.random.normal(loc=0.95, scale=0.04)
-            
             noise_factor = min(1.0, max(0.80, noise_factor))
             
             final_record_df["attendance"] = int(foot_traffic * noise_factor)
@@ -75,6 +69,7 @@ def show_sensor_page():
         else:
             st.warning("No data generated yet. Run the simulation first.")
 
+    # --- LEFT COLUMN: CONTROLS ---
     with sensor_col:
         st.subheader("Sensor Controls")
         st.session_state.selected_mass_time = st.selectbox(
@@ -93,11 +88,9 @@ def show_sensor_page():
         with btn1:
             if st.button("Start"):
                 st.session_state.simulation_running = True
-
         with btn2:
             if st.button("Pause"):
                 st.session_state.simulation_running = False
-
         with btn3:
             if st.button("Reset"):
                 st.session_state.simulation_running = False
@@ -106,92 +99,125 @@ def show_sensor_page():
                 st.session_state.sensor_increments = []
                 st.session_state.sim_time_minutes = -60
 
-        st.metric(
-            "Live Occupancy Count",
-            f"{st.session_state.live_count} / {st.session_state.max_capacity}",
-            help="This shows how many people are currently counted inside the church during the simulation."
-        )
-        st.metric(
-            "Simulation Timeline",
-            f"T {st.session_state.sim_time_minutes} mins"
-            if st.session_state.sim_time_minutes <= 0
-            else f"T +{st.session_state.sim_time_minutes} mins",
-            help="This shows the simulated time before or after the start of the service."
-        )
+        # Create empty placeholders for UI elements to overwrite without flickering
+        live_count_placeholder = st.empty()
+        timeline_placeholder = st.empty()
 
+    # --- RIGHT COLUMN: CHARTS & ALERTS ---
     with alert_col:
         st.subheader("Live Dashboard Analytics")
-        occupancy_rate = (
-            st.session_state.live_count / st.session_state.max_capacity
-            if st.session_state.max_capacity > 0
-            else 0
+        alert_placeholder = st.empty()
+        bar_chart_placeholder = st.empty()
+        line_chart_placeholder = st.empty()
+
+    # --- RENDER UI FUNCTION ---
+    def update_ui_placeholders():
+        max_cap = st.session_state.get('max_capacity', 500)
+        current_count = st.session_state.get('live_count', 0)
+        current_time = st.session_state.get('sim_time_minutes', -60)
+        
+        # 1. Update Metrics
+        live_count_placeholder.metric(
+            "Live Occupancy Count",
+            f"{current_count} / {max_cap}",
+            help="This shows how many people are currently counted inside the church during the simulation."
         )
+        
+        sim_time_str = f"T {current_time} mins" if current_time <= 0 else f"T +{current_time} mins"
+        timeline_placeholder.metric("Simulation Timeline", sim_time_str)
 
-        if occupancy_rate >= 1.0:
-            st.error("CRITICAL ALERT: Maximum capacity reached or exceeded.")
-        elif occupancy_rate >= 0.85:
-            st.warning(f"WARNING: Capacity is nearing the limit ({int(occupancy_rate * 100)}% full).")
-        elif occupancy_rate >= 0.50:
-            st.info(f"Notice: The church is filling up steadily ({int(occupancy_rate * 100)}% full).")
-        else:
-            st.success("Status Normal: Capacity is currently at safe, comfortable levels.")
+        # 2. Update Alerts
+        occupancy_rate = (current_count / max_cap) if max_cap > 0 else 0
+        with alert_placeholder.container():
+            if occupancy_rate >= 1.0:
+                st.error("CRITICAL ALERT: Maximum capacity reached or exceeded.")
+            elif occupancy_rate >= 0.85:
+                st.warning(f"WARNING: Capacity is nearing the limit ({int(occupancy_rate * 100)}% full).")
+            elif occupancy_rate >= 0.50:
+                st.info(f"Notice: The church is filling up steadily ({int(occupancy_rate * 100)}% full).")
+            else:
+                st.success("Status Normal: Capacity is currently at safe, comfortable levels.")
 
+        # 3. Update Charts (Using Streamlit Native Charts to prevent duplicate ID crashes)
         live_df = get_live_sensor_data()
-        increments_df = pd.DataFrame(st.session_state.sensor_increments)
+        increments_df = pd.DataFrame(st.session_state.get('sensor_increments', []))
 
         if not increments_df.empty:
-            st.caption("This graph shows how many people entered the church during each minute of the simulation.")
-
-            fig_bar = px.bar(
-                increments_df,
-                x="sim_time",
-                y="arrivals",
-                title="Sensor Detections per Minute (Arrival Rate)",
-                labels={
-                    "sim_time": "Minutes relative to Service Start (0)",
-                    "arrivals": "People Entering"
-                },
-            )
-
-            fig_bar.update_traces(
-                hovertemplate=
-                "<b>Minute:</b> %{x}<br>"
-                "<b>People Entering:</b> %{y}<br>"
-                "<extra></extra>"
-            )
-
-            fig_bar.update_layout(height=300, margin=dict(l=0, r=0, t=40, b=0))
-            st.plotly_chart(fig_bar, use_container_width=True)
+            with bar_chart_placeholder.container():
+                st.markdown("**Sensor Detections per Minute (Arrival Rate)**")
+                st.caption("This graph shows how many people entered the church during each minute of the simulation.")
+                st.bar_chart(increments_df, x="sim_time", y="arrivals", height=300)
 
         if not live_df.empty:
-            st.caption("This graph shows the total number of people inside the church as the simulation continues.")
+            with line_chart_placeholder.container():
+                st.markdown("**Cumulative Attendance Over Time**")
+                st.caption("This graph shows the total number of people inside the church as the simulation continues.")
+                
+                chart_data = live_df[["sim_time", "foot_traffic_count"]].copy()
+                chart_data["Max Capacity"] = max_cap
+                
+                st.line_chart(
+                    chart_data, 
+                    x="sim_time", 
+                    y=["foot_traffic_count", "Max Capacity"],
+                    height=300,
+                    color=["#8ab4f8", "#ff6d6d"] 
+                )
+        elif not st.session_state.get("simulation_running", False):
+            with line_chart_placeholder.container():
+                st.info("No live sensor data yet. Click 'Start' to begin the fast-forward simulation.")
 
-            fig_line = px.line(
-                live_df,
-                x="sim_time",
-                y="foot_traffic_count",
-                title="Cumulative Attendance Over Time",
-                labels={
-                    "sim_time": "Minutes relative to Service Start (0)",
-                    "foot_traffic_count": "Total Inside"
-                },
-            )
 
-            fig_line.update_traces(
-                hovertemplate=
-                "<b>Minute:</b> %{x}<br>"
-                "<b>Total Inside:</b> %{y}<br>"
-                "<extra></extra>"
-            )
+    # --- EXECUTION ---
+    # 1. Render the static UI immediately when the page loads or pauses
+    update_ui_placeholders()
 
-            fig_line.add_hline(
-                y=st.session_state.max_capacity,
-                line_dash="dot",
-                annotation_text="Max Capacity",
-                annotation_position="bottom right",
-            )
+    # 2. Start the Live Simulation Loop if running
+    if st.session_state.get("simulation_running", False):
+        while st.session_state.simulation_running:
+            
+            t = st.session_state.get('sim_time_minutes', -60)
+            max_cap = st.session_state.get('max_capacity', 500)
+            
+            if t <= 30:
+                # Math logic to simulate arrivals
+                mean = -5
+                std_dev = 15
+                expected_total = max_cap * 0.85
+                prob = (1 / (std_dev * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((t - mean) / std_dev) ** 2)
+                noise_factor = np.random.uniform(0.7, 1.3)
+                
+                increment = int(expected_total * prob * noise_factor)
+                increment = max(0, increment)
+                
+                # Apply limits and add to totals
+                st.session_state.live_count = st.session_state.get('live_count', 0) + increment
+                if st.session_state.live_count > max_cap:
+                    st.session_state.live_count = max_cap
 
-            fig_line.update_layout(height=300, margin=dict(l=0, r=0, t=40, b=0))
-            st.plotly_chart(fig_line, use_container_width=True)
-        else:
-            st.info("No live sensor data yet. Click 'Start' to begin the fast-forward simulation.")
+                # Save the new data point
+                now = datetime.now()
+                st.session_state.sensor_increments.append({"sim_time": t, "arrivals": increment})
+                st.session_state.sensor_log.append({
+                    "date": now, 
+                    "sim_time": t, 
+                    "mass_time": st.session_state.get("selected_mass_time", "08:00"),
+                    "attendance": st.session_state.live_count, 
+                    "foot_traffic_count": st.session_state.live_count,
+                    "capacity": max_cap, 
+                    "event_type": st.session_state.get("selected_event_type", "Regular Mass"),
+                    "holiday_flag": 0, 
+                    "weather_condition": "Clear",
+                })
+                
+                # Advance time for the next loop
+                st.session_state.sim_time_minutes += 1
+            else:
+                # Stop simulation if time limit is reached
+                st.session_state.simulation_running = False
+
+            # Refresh the UI placeholders with the new math we just calculated
+            update_ui_placeholders()
+            
+            # Wait half a second before looping again so the UI doesn't crash
+            time.sleep(0.5)

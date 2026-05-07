@@ -4,9 +4,8 @@ import numpy as np
 import plotly.express as px
 
 from datetime import datetime
-from streamlit_autorefresh import st_autorefresh
 from user_management import show_user_management_page
-from auth import initialize_auth_state, show_auth_screen
+from auth import initialize_auth_state, show_auth_screen, show_first_time_setup 
 from predictive_insights import show_predictive_insights
 from sensor_page import show_sensor_page
 from reports_page import show_reports_page
@@ -17,6 +16,7 @@ from staff_page import show_staff_dashboard
 
 st.set_page_config(page_title="Church Attendance Monitoring System (CAMS)", layout="wide")
 
+# --- INITIALIZE SESSION STATE ---
 if "live_count" not in st.session_state:
     st.session_state.live_count = 0
 if "max_capacity" not in st.session_state:
@@ -102,36 +102,12 @@ def prepare_aggregated_data(df):
 
     return daily_data, monthly_data
 
-def update_sensor_simulation():
-    if st.session_state.simulation_running:
-        t = st.session_state.sim_time_minutes
-        if t <= 30:
-            mean = -5
-            std_dev = 15
-            expected_total = st.session_state.max_capacity * 0.85
-            prob = (1 / (std_dev * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((t - mean) / std_dev) ** 2)
-            noise_factor = np.random.uniform(0.7, 1.3)
-            increment = int(expected_total * prob * noise_factor)
-            increment = max(0, increment)
-            st.session_state.live_count += increment
-            if st.session_state.live_count > st.session_state.max_capacity:
-                st.session_state.live_count = st.session_state.max_capacity
-
-            now = datetime.now()
-            st.session_state.sensor_increments.append({"sim_time": t, "arrivals": increment})
-            st.session_state.sensor_log.append({
-                "date": now, "sim_time": t, "mass_time": st.session_state.selected_mass_time,
-                "attendance": st.session_state.live_count, "foot_traffic_count": st.session_state.live_count,
-                "capacity": st.session_state.max_capacity, "event_type": st.session_state.selected_event_type,
-                "holiday_flag": 0, "weather_condition": "Clear",
-            })
-            st.session_state.sim_time_minutes += 1
-        else:
-            st.session_state.simulation_running = False
-
-
+# --- ROUTING CONTROLLER ---
 if not st.session_state.logged_in:
-    show_auth_screen()
+    if st.session_state.get("needs_setup", False):
+        show_first_time_setup()
+    else:
+        show_auth_screen()
     st.stop()
 
 if st.session_state.get("role") == "Staff":
@@ -141,6 +117,7 @@ if st.session_state.get("role") == "Staff":
     
     if st.sidebar.button("Log Out", use_container_width=True):
         st.session_state.logged_in = False
+        st.session_state.needs_setup = False
         st.session_state.current_user = None
         st.session_state.current_user_name = None
         st.session_state.role = None
@@ -148,13 +125,9 @@ if st.session_state.get("role") == "Staff":
         
     data = get_combined_data() 
     show_staff_dashboard(data)
-    
     st.stop() 
 
-if st.session_state.simulation_running:
-    st_autorefresh(interval=1000, key="sensor_refresh")
-    update_sensor_simulation()
-
+# --- ADMIN NAVIGATION ---
 st.sidebar.title("Navigation Bar")
 
 current_name = st.session_state.current_user_name or "User"
@@ -163,6 +136,7 @@ st.sidebar.warning("Role: Administrator")
 
 if st.sidebar.button("Log Out", use_container_width=True):
     st.session_state.logged_in = False
+    st.session_state.needs_setup = False
     st.session_state.current_user = None
     st.session_state.current_user_name = None
     st.session_state.role = None
@@ -222,6 +196,7 @@ if not filtered_data.empty:
 
 daily_data, monthly_data = prepare_aggregated_data(filtered_data)
 
+# --- PAGE RENDERING ---
 if page == "HOME":
     st.title("Predictive Insights on Church Attendance")
     st.markdown("Welcome to the church attendance monitoring system.")
@@ -300,7 +275,7 @@ elif page == "Reports and Exports":
     show_reports_page(filtered_data, monthly_data)
 
 elif page == "User Management":            
-       show_user_management_page()
+    show_user_management_page()
 
 elif page == "Settings":
     show_settings_page()

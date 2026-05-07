@@ -30,19 +30,50 @@ def holt_winters_forecast(ts_df, periods=6):
         return pd.DataFrame(columns=["date", "forecast_attendance"]), None, None, None
 
     ts = ts_df.copy().sort_values("date").reset_index(drop=True)
-    
     ts["attendance"] = ts["attendance"].astype(float)
     
-    model = ExponentialSmoothing(
+    # Train the final model on the ENTIRE dataset first
+    final_model = ExponentialSmoothing(
         ts["attendance"], 
         trend="add", 
         seasonal="add", 
         seasonal_periods=12,
         initialization_method="estimated"
-    )
-    fitted_model = model.fit()
-    
-    forecast_values = fitted_model.forecast(periods)
+    ).fit()
+
+    # -------------------------------------------------------------------
+    # EVALUATION PHASE: Smart check for out-of-sample vs in-sample
+    # -------------------------------------------------------------------
+    # Check if we have enough data to split and still leave >= 24 months for training
+    if len(ts) >= 24 + periods:
+        # Out-of-sample testing (Dynamic metrics)
+        train_ts = ts.iloc[:-periods]
+        test_ts = ts.iloc[-periods:]
+        
+        eval_model = ExponentialSmoothing(
+            train_ts["attendance"], 
+            trend="add", 
+            seasonal="add", 
+            seasonal_periods=12,
+            initialization_method="estimated"
+        ).fit()
+        
+        eval_forecast = eval_model.forecast(periods)
+        eval_forecast = np.maximum(eval_forecast, 0)  
+        
+        mae = mean_absolute_error(test_ts["attendance"], eval_forecast)
+        rmse = np.sqrt(mean_squared_error(test_ts["attendance"], eval_forecast))
+        mape = mean_absolute_percentage_error(test_ts["attendance"], eval_forecast)
+    else:
+        # Fallback: In-sample testing (Static metrics) to prevent crashes
+        mae = mean_absolute_error(ts["attendance"], final_model.fittedvalues)
+        rmse = np.sqrt(mean_squared_error(ts["attendance"], final_model.fittedvalues))
+        mape = mean_absolute_percentage_error(ts["attendance"], final_model.fittedvalues)
+
+    # -------------------------------------------------------------------
+    # FORECAST PHASE: Predicting the actual future
+    # -------------------------------------------------------------------
+    forecast_values = final_model.forecast(periods)
     forecast_values = np.maximum(forecast_values, 0)  
     
     future_dates = pd.date_range(
@@ -55,10 +86,6 @@ def holt_winters_forecast(ts_df, periods=6):
         "date": future_dates,
         "forecast_attendance": forecast_values.values.round(0)
     })
-    
-    mae = mean_absolute_error(ts["attendance"], fitted_model.fittedvalues)
-    rmse = np.sqrt(mean_squared_error(ts["attendance"], fitted_model.fittedvalues))
-    mape = mean_absolute_percentage_error(ts["attendance"], fitted_model.fittedvalues)
     
     return result, mae, rmse, mape
 

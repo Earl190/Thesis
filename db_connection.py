@@ -142,6 +142,7 @@ def upload_demographic_data(df):
             pass
         return False, f"Upload Failed: {str(e)}"
 
+# --- UPDATED: Now fetches SecurityQuestion and SecurityAnswer ---
 def get_user_by_username(username):
     engine = get_engine()
     query = text("""
@@ -151,6 +152,8 @@ def get_user_by_username(username):
             u.Email,
             u.Username,
             u.PasswordHash,
+            u.SecurityQuestion,
+            u.SecurityAnswer,
             r.RoleName AS Role 
         FROM dbo.Users u
         INNER JOIN dbo.Roles r
@@ -404,7 +407,6 @@ def save_service_schedules(schedules):
     
     delete_query = text("DELETE FROM dbo.ServiceSchedules;")
     
-    # --- UPDATED: Insert query now includes the AcknowledgedBy column ---
     insert_query = text("""
         INSERT INTO dbo.ServiceSchedules (ServiceName, StartTime, EndTime, AcknowledgedBy)
         VALUES (:name, :start, :end, :acknowledged_by)
@@ -419,7 +421,6 @@ def save_service_schedules(schedules):
                     "name": schedule["name"],
                     "start": schedule["start"],
                     "end": schedule["end"],
-                    # JSON.dumps converts ["User1"] into '["User1"]' for SQL Server
                     "acknowledged_by": json.dumps(schedule.get("acknowledged_by", []))
                 })
         return True, "Schedules saved to database successfully!"
@@ -427,7 +428,6 @@ def save_service_schedules(schedules):
         return False, f"Failed to save schedules: {str(e)}"
     
 def get_all_users():
-    """Fetches all users for the admin dashboard."""
     engine = get_engine()
     query = text("""
         SELECT 
@@ -444,7 +444,6 @@ def get_all_users():
         return []
 
 def toggle_user_status(username, is_active):
-    """Activates (1) or Deactivates (0) a user account."""
     engine = get_engine()
     query = text("""
         UPDATE dbo.Users 
@@ -459,7 +458,6 @@ def toggle_user_status(username, is_active):
         return False
 
 def admin_reset_password(username, new_password):
-    """Allows an admin to force-reset a staff password."""
     engine = get_engine()
     query = text("""
         UPDATE dbo.Users 
@@ -470,6 +468,29 @@ def admin_reset_password(username, new_password):
         with engine.begin() as conn:
             conn.execute(query, {
                 "new_password": new_password,
+                "username": username
+            })
+        return True
+    except Exception as e:
+        return False
+
+# --- NEW FUNCTION: Force Update User Credentials ---
+def setup_new_user_credentials(username, new_password, new_question, new_answer):
+    """Updates password, security question, and answer during first-time setup."""
+    engine = get_engine()
+    query = text("""
+        UPDATE dbo.Users 
+        SET PasswordHash = :new_password,
+            SecurityQuestion = :new_question,
+            SecurityAnswer = :new_answer
+        WHERE Username = :username
+    """)
+    try:
+        with engine.begin() as conn:
+            conn.execute(query, {
+                "new_password": new_password,
+                "new_question": new_question,
+                "new_answer": new_answer,
                 "username": username
             })
         return True
