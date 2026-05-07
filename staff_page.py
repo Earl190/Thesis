@@ -3,12 +3,9 @@ import pandas as pd
 import plotly.express as px
 from db_connection import get_service_schedules, save_service_schedules 
 
-# --- CALLBACK FUNCTION: Safely handles the database save before Streamlit redraws ---
 def handle_acknowledgment(sched_name, user_name):
-    # Fetch fresh from DB
     db_schedules = get_service_schedules()
     
-    # Find and update the specific schedule
     for sched in db_schedules:
         if sched.get("name") == sched_name:
             if "acknowledged_by" not in sched:
@@ -17,10 +14,7 @@ def handle_acknowledgment(sched_name, user_name):
             if user_name not in sched["acknowledged_by"]:
                 sched["acknowledged_by"].append(user_name)
     
-    # Save back to DB
     save_service_schedules(db_schedules)
-    
-    # Clear cache to force Streamlit to fetch the new DB data on redraw
     st.cache_data.clear()
 
 def show_staff_dashboard(data):
@@ -55,7 +49,6 @@ def show_staff_dashboard(data):
                 st.write(f"**Time:** {sched['start']} - {sched['end']}")
                 st.write("Ensure monitoring systems are prepared.")
                 
-                # Using on_click callback to prevent silent failures
                 st.button(
                     "Acknowledge", 
                     key=f"ack_{sched['name']}",
@@ -94,89 +87,86 @@ def show_staff_dashboard(data):
             else:
                 filtered_data = filtered_data.iloc[0:0] 
 
-    st.divider()
+    # --- MAIN VIEW: METRICS ---
+    with st.container(border=True):
+        st.subheader("📊 Attendance Overview")
+        col1, col2, col3 = st.columns(3)
+        
+        avg_attendance = int(filtered_data["attendance"].mean()) if not filtered_data.empty else 0
+        max_attendance = int(filtered_data["attendance"].max()) if not filtered_data.empty else 0
+        
+        if not filtered_data.empty and "event_type" in filtered_data.columns:
+            latest_event = filtered_data.sort_values("date").iloc[-1]["event_type"]
+        else:
+            latest_event = "N/A"
+
+        col1.metric("Average Attendance", avg_attendance)
+        col2.metric("Highest Recorded", max_attendance)
+        col3.metric("Latest Event Logged", latest_event)
 
     # --- MAIN VIEW: ACKNOWLEDGMENT HISTORY TABLE ---
-    st.subheader("📋 Acknowledgment History")
-    if acknowledged_schedules:
-        history_records = []
-        for sched in acknowledged_schedules:
-            history_records.append({
-                "Event Name": sched.get("name", "Unknown"),
-                "Start Time": sched.get("start", "N/A"),
-                "End Time": sched.get("end", "N/A"),
-                "Acknowledged By": ", ".join(sched.get("acknowledged_by", []))
-            })
-        
-        df_history = pd.DataFrame(history_records)
-        st.dataframe(df_history, use_container_width=True, hide_index=True)
-    else:
-        st.info("You haven't acknowledged any schedules yet.")
-
-    st.divider()
-
-    # --- MAIN VIEW: METRICS ---
-    st.subheader("📊 Attendance Overview")
-    col1, col2, col3 = st.columns(3)
-    
-    avg_attendance = int(filtered_data["attendance"].mean()) if not filtered_data.empty else 0
-    max_attendance = int(filtered_data["attendance"].max()) if not filtered_data.empty else 0
-    
-    if not filtered_data.empty and "event_type" in filtered_data.columns:
-        latest_event = filtered_data.sort_values("date").iloc[-1]["event_type"]
-    else:
-        latest_event = "N/A"
-
-    col1.metric("Average Attendance", avg_attendance)
-    col2.metric("Highest Recorded", max_attendance)
-    col3.metric("Latest Event Logged", latest_event)
-
-    st.divider()
+    with st.container(border=True):
+        st.subheader("📋 Acknowledgment History")
+        if acknowledged_schedules:
+            history_records = []
+            for sched in acknowledged_schedules:
+                history_records.append({
+                    "Event Name": sched.get("name", "Unknown"),
+                    "Start Time": sched.get("start", "N/A"),
+                    "End Time": sched.get("end", "N/A"),
+                    "Acknowledged By": ", ".join(sched.get("acknowledged_by", []))
+                })
+            
+            df_history = pd.DataFrame(history_records)
+            st.dataframe(df_history, use_container_width=True, hide_index=True)
+        else:
+            st.info("You haven't acknowledged any schedules yet.")
 
     if filtered_data.empty:
         st.info("No attendance data available for the selected filters.")
         return
 
     # --- MAIN VIEW: CHARTS ---
-    left_col, right_col = st.columns(2)
+    with st.container(border=True):
+        st.subheader("📈 Attendance Trends")
+        left_col, right_col = st.columns(2)
 
-    with left_col:
-        st.caption("Recent Attendance Trends")
-        daily_trend = filtered_data.groupby(filtered_data["date"].dt.date)["attendance"].mean().reset_index()
-        daily_trend["date"] = pd.to_datetime(daily_trend["date"]) 
-        
-        fig_line = px.line(
-            daily_trend, 
-            x="date", 
-            y="attendance", 
-            markers=True,
-            title="Daily Attendance Overview"
-        )
-        st.plotly_chart(fig_line, use_container_width=True)
-
-    with right_col:
-        st.caption("Attendance by Event Type")
-        if "event_type" in filtered_data.columns:
-            event_summary = filtered_data.groupby("event_type", as_index=False)["attendance"].mean()
-            fig_bar = px.bar(
-                event_summary, 
-                x="event_type", 
-                y="attendance",
-                title="Average Turnout per Event"
+        with left_col:
+            st.caption("Recent Attendance Trends")
+            daily_trend = filtered_data.groupby(filtered_data["date"].dt.date)["attendance"].mean().reset_index()
+            daily_trend["date"] = pd.to_datetime(daily_trend["date"]) 
+            
+            fig_line = px.line(
+                daily_trend, 
+                x="date", 
+                y="attendance", 
+                markers=True
             )
-            st.plotly_chart(fig_bar, use_container_width=True)
-        else:
-            st.info("Event type data not available.")
+            fig_line.update_layout(height=400)
+            st.plotly_chart(fig_line, use_container_width=True)
 
-    st.divider()
+        with right_col:
+            st.caption("Attendance by Event Type")
+            if "event_type" in filtered_data.columns:
+                event_summary = filtered_data.groupby("event_type", as_index=False)["attendance"].mean()
+                fig_bar = px.bar(
+                    event_summary, 
+                    x="event_type", 
+                    y="attendance"
+                )
+                fig_bar.update_layout(height=400)
+                st.plotly_chart(fig_bar, use_container_width=True)
+            else:
+                st.info("Event type data not available.")
 
     # --- MAIN VIEW: SENSOR LOGS ---
-    st.subheader("📡 Recent Automated Sensor Logs")
-    st.caption("Data is logged automatically. Contact the System Administrator for any discrepancies.")
-    
-    available_cols = filtered_data.columns.tolist()
-    display_cols = [c for c in ["date", "mass_time", "event_type", "attendance", "foot_traffic_count", "capacity"] if c in available_cols]
-    
-    staff_df = filtered_data[display_cols].sort_values("date", ascending=False).head(50) 
-    
-    st.dataframe(staff_df, use_container_width=True, hide_index=True)
+    with st.container(border=True):
+        st.subheader("📡 Recent Automated Sensor Logs")
+        st.caption("Data is logged automatically. Contact the System Administrator for any discrepancies.")
+        
+        available_cols = filtered_data.columns.tolist()
+        display_cols = [c for c in ["date", "mass_time", "event_type", "attendance", "foot_traffic_count", "capacity"] if c in available_cols]
+        
+        staff_df = filtered_data[display_cols].sort_values("date", ascending=False).head(50) 
+        
+        st.dataframe(staff_df, use_container_width=True, hide_index=True)

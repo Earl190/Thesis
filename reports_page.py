@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from predictive_insights import prepare_time_series, holt_winters_forecast
+
 def show_reports_page(filtered_data, monthly_data):
     
     st.title("Reports and Exports")
@@ -21,10 +22,18 @@ def show_reports_page(filtered_data, monthly_data):
             export_df = monthly_data.copy()
             
         else:
-            forecast_df, _ = holt_winters_forecast(
+            # FIX: Catch all returned values into a single variable to avoid unpack errors
+            forecast_results = holt_winters_forecast(
                 prepare_time_series(filtered_data),
                 periods=6
             )
+            
+            # Extract the DataFrame (it is almost always the first item in the tuple)
+            if isinstance(forecast_results, tuple):
+                forecast_df = forecast_results[0]
+            else:
+                forecast_df = forecast_results
+
             export_df = (
                 forecast_df.copy()
                 if not forecast_df.empty

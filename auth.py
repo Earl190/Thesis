@@ -72,14 +72,12 @@ def show_auth_screen():
             user = get_user_by_username(login_username)
 
             if user and user["PasswordHash"] == login_password:
-                # --- NEW LOGIC: Check for AdminCreated flag ---
                 if user.get("SecurityAnswer") == "AdminCreated":
                     st.session_state.needs_setup = True
                     st.session_state.setup_user_data = user  # Store user data temporarily
                     st.warning("First time setup required. Redirecting...")
                     st.rerun()
                 else:
-                    # Standard Login
                     st.session_state.logged_in = True
                     st.session_state.current_user = user["Username"]
                     st.session_state.current_user_name = user["FullName"]
@@ -90,7 +88,6 @@ def show_auth_screen():
             else:
                 st.error("Invalid username or password. Please contact the Administrator if you have forgotten your credentials.")
 
-# --- NEW FUNCTION: First Time Setup Screen ---
 def show_first_time_setup():
     add_church_styling()
     st.title("Complete Your Account Setup")
@@ -125,11 +122,9 @@ def show_first_time_setup():
             elif not new_answer:
                 st.error("Please provide an answer to the security question.")
             else:
-                # Update DB via db_connection
                 if setup_new_user_credentials(username, new_pw, new_question, new_answer):
                     st.success("Account secured successfully! Logging you in...")
                     
-                    # Grant full access
                     st.session_state.logged_in = True
                     st.session_state.current_user = username
                     st.session_state.current_user_name = user_data.get("FullName")
