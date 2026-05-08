@@ -1,5 +1,5 @@
 import streamlit as st
-from db_connection import get_user_by_username, setup_new_user_credentials
+from db_connection import get_user_by_username, setup_new_user_credentials, log_user_login
 
 def add_church_styling():
     st.markdown(
@@ -44,9 +44,9 @@ def add_church_styling():
 def initialize_auth_state():
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
-    if "needs_setup" not in st.session_state: # NEW
+    if "needs_setup" not in st.session_state: 
         st.session_state.needs_setup = False
-    if "setup_user_data" not in st.session_state: # NEW
+    if "setup_user_data" not in st.session_state: 
         st.session_state.setup_user_data = None
     if "current_user" not in st.session_state:
         st.session_state.current_user = None
@@ -82,6 +82,9 @@ def show_auth_screen():
                     st.session_state.current_user = user["Username"]
                     st.session_state.current_user_name = user["FullName"]
                     st.session_state.role = user.get("Role", "Admin") 
+                    
+                    # LOG THE LOGIN EVENT
+                    log_user_login(user["Username"], "Success")
                     
                     st.success(f"Welcome back, {user['FullName']}!")
                     st.rerun()
@@ -129,6 +132,8 @@ def show_first_time_setup():
                     st.session_state.current_user = username
                     st.session_state.current_user_name = user_data.get("FullName")
                     st.session_state.role = user_data.get("Role", "Admin")
+                    
+                    log_user_login(username, "First Time Setup Success")
                     
                     st.session_state.needs_setup = False
                     st.session_state.setup_user_data = None

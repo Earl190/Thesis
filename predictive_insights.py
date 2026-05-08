@@ -207,6 +207,9 @@ def show_predictive_insights(filtered_data):
                 "<extra></extra>"
             )
 
+            # Added the range slider here with thickness adjusted to hide mini-graph
+            scatter_fig.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
+
             scatter_fig.update_layout(
                 xaxis_title="Foot Traffic Count",
                 yaxis_title="Attendance"
@@ -325,6 +328,18 @@ def show_predictive_insights(filtered_data):
                 color="series",
                 markers=True,
                 title="Attendance Time-Series Forecast (Holt-Winters)",
+            )
+
+            # Adding zoom slider and buttons with thickness adjusted to hide mini-graph
+            fig_forecast.update_xaxes(
+                rangeslider=dict(visible=True, thickness=0.02),
+                rangeselector=dict(
+                    buttons=list([
+                        dict(count=1, label="1y", step="year", stepmode="backward"),
+                        dict(count=2, label="2y", step="year", stepmode="backward"),
+                        dict(step="all")
+                    ])
+                )
             )
 
             fig_forecast.update_traces(

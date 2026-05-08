@@ -4,9 +4,9 @@ import pandas as pd
 from db_connection import (
     backup_database, 
     upload_csv_data, 
-    upload_demographic_data,
     get_service_schedules,
-    save_service_schedules
+    save_service_schedules,
+    get_user_by_username # Imported for password verification
 )
 
 def initialize_settings_state():
@@ -107,14 +107,8 @@ def show_settings_page():
     st.header("Database & Sensor Management")
     st.markdown("Manage your historical data caches and active sensor logs.")
     
-    with st.expander("Upload Historical & Demographic Data (CSV)"):
-        st.info("Upload historical attendance or demographic files to the database.")
-        
-        upload_type = st.radio(
-            "Select Data Type to Upload:",
-            ["Church Attendance Data", "Demographic Data"],
-            horizontal=True
-        )
+    with st.expander("Upload Historical Attendance Data (CSV)"):
+        st.info("Upload historical attendance files to the database.")
         
         uploaded_file = st.file_uploader("Select a CSV file", type="csv")
         
@@ -129,19 +123,13 @@ def show_settings_page():
             st.dataframe(df) 
             
             if st.button("Commit Records to Database", type="secondary"):
-                with st.spinner(f"Uploading {upload_type.lower()} to database..."):
-                    
-                    if upload_type == "Church Attendance Data":
-                        success, msg = upload_csv_data(df)
-                    else:
-                        success, msg = upload_demographic_data(df)
+                with st.spinner("Uploading attendance data to database..."):
+                    success, msg = upload_csv_data(df)
                         
                     if success:
                         st.success(f"Successfully processed {len(df)} records!")
                         st.caption(msg)
-                        
                         st.cache_data.clear()
-                        
                     else:
                         st.error("Upload failed.")
                         st.error(msg)
@@ -151,7 +139,9 @@ def show_settings_page():
     db_col1, db_col2, db_col3 = st.columns(3)
     
     with db_col1:
-        if st.button("Trigger Manual Backup", width='stretch'):
+        # Invisible spacer so this button aligns with the bottom of the password input field
+        st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+        if st.button("Trigger Manual Backup", use_container_width=True):
             with st.spinner("Executing SQL Server Backup..."):
                 success, message = backup_database()
                 if success:
@@ -162,7 +152,8 @@ def show_settings_page():
                     st.error(f"Details: {message}")
             
     with db_col2:
-        if st.button("Clear Live Sensor Cache", width='stretch'):
+        st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+        if st.button("Clear Live Sensor Cache", use_container_width=True):
             st.session_state.sensor_log = []
             st.session_state.sensor_increments = []
             st.session_state.live_count = 0
@@ -170,6 +161,18 @@ def show_settings_page():
             st.toast("Live sensor cache cleared.")
 
     with db_col3:
-        if st.button("Factory Reset Database", type="primary", width='stretch'):
-            st.session_state.sensor_log = []
-            st.toast("Database reset to factory defaults. All unsaved data lost.")
+        # Admin password input field
+        admin_password = st.text_input(
+            "Admin Password:", 
+            type="password", 
+            placeholder="Enter password to reset", 
+            label_visibility="collapsed"
+        )
+        
+        if st.button("Factory Reset Database", type="primary", use_container_width=True, disabled=not admin_password):
+            
+            if admin_password == "admin123": 
+                st.session_state.sensor_log = []
+                st.success("Database reset to factory defaults.")
+            else:
+                st.error("Incorrect password. Factory reset aborted.")

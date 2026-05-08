@@ -85,7 +85,6 @@ def prepare_aggregated_data(df):
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date")
 
-    # ADDED .round(0) here to fix the daily averages
     daily_data = (
         df.groupby(df["date"].dt.date)
         .agg({"attendance": "mean", "foot_traffic_count": "mean", "capacity": "mean"})
@@ -94,7 +93,6 @@ def prepare_aggregated_data(df):
     )
     daily_data["date"] = pd.to_datetime(daily_data["date"])
 
-    # ADDED .round(0) here to fix the monthly averages shown in your screenshot
     monthly_data = (
         df.groupby(df["date"].dt.to_period("M"))
         .agg({"attendance": "mean", "foot_traffic_count": "mean", "capacity": "mean"})
@@ -129,7 +127,6 @@ if st.session_state.get("role") == "Staff":
     show_staff_dashboard(data)
     st.stop() 
 
-# --- ADMIN NAVIGATION ---
 st.sidebar.title("Navigation Bar")
 
 current_name = st.session_state.current_user_name or "User"
@@ -220,6 +217,9 @@ if page == "HOME":
             monthly_data, x="date", y="attendance", markers=True,
             title="Monthly Average Attendance Overview",
         )
+        
+        # Plotly range slider handles zooming, thickness set to hide mini-graph
+        fig_home.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
         st.plotly_chart(fig_home, width='stretch')
     else:
         st.info("No data available for the selected filters.")
@@ -243,11 +243,17 @@ elif page == "Attendance Records":
 
         with top1:
             fig_daily = px.line(daily_data, x="date", y="attendance", markers=True, title="Daily Attendance Trend")
+            
+            # Plotly range slider handles zooming, thickness set to hide mini-graph
+            fig_daily.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
             st.plotly_chart(fig_daily, width='stretch')
 
         with top2:
             event_summary = filtered_data.groupby("event_type", as_index=False)["attendance"].mean().sort_values("attendance", ascending=False)
             fig_event = px.bar(event_summary, x="event_type", y="attendance", title="Average Attendance by Event Type")
+            
+            # Plotly range slider handles zooming, thickness set to hide mini-graph
+            fig_event.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
             st.plotly_chart(fig_event, width='stretch')
 
         bottom1, bottom2 = st.columns(2)
@@ -258,6 +264,9 @@ elif page == "Attendance Records":
             dow_summary["day_of_week"] = pd.Categorical(dow_summary["day_of_week"], categories=order, ordered=True)
             dow_summary = dow_summary.sort_values("day_of_week")
             fig_dow = px.bar(dow_summary, x="day_of_week", y="attendance", title="Average Attendance by Day")
+            
+            # Plotly range slider handles zooming, thickness set to hide mini-graph
+            fig_dow.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
             st.plotly_chart(fig_dow, width='stretch')
 
         with bottom2:

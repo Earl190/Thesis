@@ -96,7 +96,6 @@ def upload_demographic_data(df):
                 
         df_filtered = df[expected_columns].copy()
         
-        # 3. Drop empty rows
         df_filtered = df_filtered.dropna(subset=["location_name"])
         
         if df_filtered.empty:
@@ -105,7 +104,6 @@ def upload_demographic_data(df):
         df_filtered.to_sql("Demographics_Staging", con=engine, schema="dbo", if_exists="append", index=False)
 
         process_query = text("""
-            -- Insert new locations
             INSERT INTO dbo.Demographics (LocationName, HouseholdPopulation, ApostolicCatholic, CatholicCharismatic, PhilippineIndependent, RomanCatholic)
             SELECT 
                 location_name, MAX(household_population), MAX(apostolic_catholic), 
@@ -116,7 +114,6 @@ def upload_demographic_data(df):
             )
             GROUP BY location_name;
 
-            -- Update existing locations if the data changed
             UPDATE d
             SET 
                 d.HouseholdPopulation = s.household_population,
@@ -125,7 +122,6 @@ def upload_demographic_data(df):
             FROM dbo.Demographics d
             INNER JOIN dbo.Demographics_Staging s ON d.LocationName = s.location_name;
 
-            -- Clean the staging table
             TRUNCATE TABLE dbo.Demographics_Staging;
         """)
 
@@ -142,7 +138,6 @@ def upload_demographic_data(df):
             pass
         return False, f"Upload Failed: {str(e)}"
 
-# --- UPDATED: Now fetches SecurityQuestion and SecurityAnswer ---
 def get_user_by_username(username):
     engine = get_engine()
     query = text("""
@@ -379,7 +374,6 @@ def get_service_schedules():
             for row in result:
                 sched = dict(row)
                 
-                # Convert the JSON string back into a Python List
                 if sched.get("acknowledged_by"):
                     try:
                         sched["acknowledged_by"] = json.loads(sched["acknowledged_by"])
@@ -474,9 +468,7 @@ def admin_reset_password(username, new_password):
     except Exception as e:
         return False
 
-# --- NEW FUNCTION: Force Update User Credentials ---
 def setup_new_user_credentials(username, new_password, new_question, new_answer):
-    """Updates password, security question, and answer during first-time setup."""
     engine = get_engine()
     query = text("""
         UPDATE dbo.Users 
@@ -496,3 +488,67 @@ def setup_new_user_credentials(username, new_password, new_question, new_answer)
         return True
     except Exception as e:
         return False
+
+# --- NEW FUNCTIONS FOR USER LOGGING ---
+
+def log_user_login(username, status="Success"):
+    """
+    Records the login event in the database.
+    Automatically creates the UserLogs table if it does not exist.
+    """
+    engine = get_engine()
+    
+    # Check if table exists, if not, create it
+    table_check_query = text("""
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='UserLogs' and xtype='U')
+        BEGIN
+            CREATE TABLE dbo.UserLogs (
+                LogID INT IDENTITY(1,1) PRIMARY KEY,
+                Username VARCHAR(255),
+                LoginTime DATETIME,
+                Status VARCHAR(50)
+            )
+        END
+    """)
+    
+    # Insert the log record
+    insert_query = text("""
+        INSERT INTO dbo.UserLogs (Username, LoginTime, Status)
+        VALUES (:username, GETDATE(), :status)
+    """)
+    
+    try:
+        with engine.begin() as conn:
+            conn.execute(table_check_query)
+            conn.execute(insert_query, {"username": username, "status": status})
+        return True
+    except Exception as e:
+        print(f"Error logging user: {e}")
+        return False
+
+def get_user_logs(username):
+    """
+    Retrieves the login history for a specific user from the database.
+    """
+    engine = get_engine()
+    query = text("""
+        SELECT LoginTime, Status 
+        FROM dbo.UserLogs 
+        WHERE Username = :username 
+        ORDER BY LoginTime DESC
+    """)
+    
+    try:
+        table_check = text("IF OBJECT_ID('dbo.UserLogs', 'U') IS NOT NULL SELECT 1 ELSE SELECT 0")
+        
+        with engine.connect() as conn:
+            exists = conn.execute(table_check).scalar()
+            
+            if not exists:
+                return []
+            
+            result = conn.execute(query, {"username": username}).mappings().fetchall()
+            return [dict(row) for row in result]
+    except Exception as e:
+        print(f"Error retrieving user logs: {e}")
+        return []

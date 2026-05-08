@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db_connection import get_all_users, toggle_user_status, admin_reset_password, create_user
+from db_connection import get_all_users, toggle_user_status, admin_reset_password, create_user, get_user_logs 
 
 def show_user_management_page():
     st.title("User Management Control Panel")
@@ -9,7 +9,7 @@ def show_user_management_page():
     users = get_all_users()
     df_users = pd.DataFrame(users) if users else pd.DataFrame()
 
-    tab1, tab2, tab3 = st.tabs(["Manage Accounts", "Add New Staff", "Reset Passwords"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Manage Accounts", "Add New Staff", "Reset Passwords", "Login Logs"])
 
     with tab1:
         st.subheader("Current System Users")
@@ -90,3 +90,25 @@ def show_user_management_page():
                             st.error("Database error occurred.")
                     else:
                         st.error("Passwords do not match or are empty.")
+
+    with tab4:
+        st.subheader("Staff Login History")
+        st.caption("Click on a staff member's name to drop down and view their recent login activity.")
+        
+        if not df_users.empty:
+            for index, row in df_users.iterrows():
+                username = row["Username"]
+                full_name = row["FullName"]
+                
+                with st.expander(f"View logs for {full_name} (@{username})"):
+                    user_logs = get_user_logs(username) 
+                    
+                    if user_logs:
+                        df_logs = pd.DataFrame(user_logs)
+                        # Sorting so the most recent login is at the top
+                        df_logs = df_logs.sort_values(by="LoginTime", ascending=False)
+                        st.dataframe(df_logs, width='stretch', hide_index=True)
+                    else:
+                        st.info(f"No login records found for {username}.")
+        else:
+            st.info("No users found in the database.")

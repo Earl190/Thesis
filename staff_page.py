@@ -42,14 +42,16 @@ def show_staff_dashboard(data):
     
     if unacknowledged_schedules:
         st.sidebar.warning(f"You have {len(unacknowledged_schedules)} pending tasks.")
-        for sched in unacknowledged_schedules:
+        
+        # --- FIX APPLIED HERE: Added enumerate to ensure unique keys ---
+        for i, sched in enumerate(unacknowledged_schedules):
             with st.sidebar.expander(f"⚠️ {sched['name']}", expanded=True):
                 st.write(f"**Time:** {sched['start']} - {sched['end']}")
                 st.write("Ensure monitoring systems are prepared.")
                 
                 st.button(
                     "Acknowledge", 
-                    key=f"ack_{sched['name']}",
+                    key=f"ack_{sched['name']}_{i}", # <--- Unique key generated here
                     on_click=handle_acknowledgment,
                     args=(sched['name'], current_name),
                     width='stretch'
@@ -123,7 +125,6 @@ def show_staff_dashboard(data):
         st.info("No attendance data available for the selected filters.")
         return
 
-    # --- MAIN VIEW: CHARTS ---
     with st.container(border=True):
         st.subheader("Attendance Trends")
         left_col, right_col = st.columns(2)
@@ -139,6 +140,9 @@ def show_staff_dashboard(data):
                 y="attendance", 
                 markers=True
             )
+            
+            fig_line.update_xaxes(rangeslider_visible=True)
+            
             fig_line.update_layout(height=400)
             st.plotly_chart(fig_line, width='stretch')
 
@@ -151,12 +155,14 @@ def show_staff_dashboard(data):
                     x="event_type", 
                     y="attendance"
                 )
+                
+                fig_bar.update_xaxes(rangeslider_visible=True)
+                
                 fig_bar.update_layout(height=400)
                 st.plotly_chart(fig_bar, width='stretch')
             else:
                 st.info("Event type data not available.")
 
-    # --- MAIN VIEW: SENSOR LOGS ---
     with st.container(border=True):
         st.subheader("Recent Automated Sensor Logs")
         st.caption("Data is logged automatically. Contact the System Administrator for any discrepancies.")
