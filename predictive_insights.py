@@ -32,7 +32,6 @@ def holt_winters_forecast(ts_df, periods=6):
     ts = ts_df.copy().sort_values("date").reset_index(drop=True)
     ts["attendance"] = ts["attendance"].astype(float)
     
-    # Train the final model on the ENTIRE dataset first
     final_model = ExponentialSmoothing(
         ts["attendance"], 
         trend="add", 
@@ -41,12 +40,7 @@ def holt_winters_forecast(ts_df, periods=6):
         initialization_method="estimated"
     ).fit()
 
-    # -------------------------------------------------------------------
-    # EVALUATION PHASE: Smart check for out-of-sample vs in-sample
-    # -------------------------------------------------------------------
-    # Check if we have enough data to split and still leave >= 24 months for training
     if len(ts) >= 24 + periods:
-        # Out-of-sample testing (Dynamic metrics)
         train_ts = ts.iloc[:-periods]
         test_ts = ts.iloc[-periods:]
         
@@ -66,15 +60,11 @@ def holt_winters_forecast(ts_df, periods=6):
         mape = mean_absolute_percentage_error(test_ts["attendance"], eval_forecast)
         r2 = r2_score(test_ts["attendance"], eval_forecast)
     else:
-        # Fallback: In-sample testing (Static metrics) to prevent crashes
         mae = mean_absolute_error(ts["attendance"], final_model.fittedvalues)
         rmse = np.sqrt(mean_squared_error(ts["attendance"], final_model.fittedvalues))
         mape = mean_absolute_percentage_error(ts["attendance"], final_model.fittedvalues)
         r2 = r2_score(ts["attendance"], final_model.fittedvalues)
 
-    # -------------------------------------------------------------------
-    # FORECAST PHASE: Predicting the actual future
-    # -------------------------------------------------------------------
     forecast_values = final_model.forecast(periods)
     forecast_values = np.maximum(forecast_values, 0)  
     
@@ -207,7 +197,6 @@ def show_predictive_insights(filtered_data):
                 "<extra></extra>"
             )
 
-            # Added the range slider here with thickness adjusted to hide mini-graph
             scatter_fig.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
 
             scatter_fig.update_layout(
@@ -266,7 +255,6 @@ def show_predictive_insights(filtered_data):
         ts_data = prepare_time_series(filtered_data)
         forecast_months = st.slider("Forecast Months Ahead", min_value=3, max_value=12, value=6)
         
-        # Call the new Holt-Winters function and unpack 5 metrics
         forecast_df, forecast_mae, forecast_rmse, forecast_mape, forecast_r2 = holt_winters_forecast(ts_data, periods=forecast_months)
 
         if len(ts_data) >= 24 and not forecast_df.empty:
@@ -330,7 +318,6 @@ def show_predictive_insights(filtered_data):
                 title="Attendance Time-Series Forecast (Holt-Winters)",
             )
 
-            # Adding zoom slider and buttons with thickness adjusted to hide mini-graph
             fig_forecast.update_xaxes(
                 rangeslider=dict(visible=True, thickness=0.02),
                 rangeselector=dict(

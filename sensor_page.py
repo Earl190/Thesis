@@ -2,12 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np 
 import time
-from datetime import datetime
 
+from datetime import datetime
 from db_connection import upload_csv_data
 
 def get_live_sensor_data():
-    # If there's no data yet, return an empty DataFrame with the correct columns
     if not st.session_state.get("sensor_log"):
         return pd.DataFrame(
             columns=[
@@ -17,7 +16,6 @@ def get_live_sensor_data():
             ]
         )
 
-    # Convert session state log to DataFrame
     df = pd.DataFrame(st.session_state.sensor_log)
     df["date"] = pd.to_datetime(df["date"])
     df["year"] = df["date"].dt.year
@@ -25,14 +23,12 @@ def get_live_sensor_data():
     df["day_of_week"] = df["date"].dt.day_name()
     df["is_weekend"] = df["date"].dt.dayofweek.isin([5, 6]).astype(int)
 
-    # Fill missing columns with defaults
     if "holiday_flag" not in df.columns:
         df["holiday_flag"] = 0
     if "weather_condition" not in df.columns:
         df["weather_condition"] = "Unknown"
 
     return df
-
 
 def show_sensor_page():
     st.title("Live Sensor Feed & Alert System")
@@ -44,7 +40,6 @@ def show_sensor_page():
     st.subheader("Database Synchronization")
     st.caption("Push the finalized simulation data to SQL Server. This makes it available to your sidebar filters and historical dashboards.")
 
-    # --- DATABASE SYNC BUTTON ---
     if st.button("Sync Final Data to Database", type="primary"):
         final_live_df = get_live_sensor_data()
         
@@ -105,7 +100,6 @@ def show_sensor_page():
         live_count_placeholder = st.empty()
         timeline_placeholder = st.empty()
 
-    # --- RIGHT COLUMN: CHARTS & ALERTS ---
     with alert_col:
         st.subheader("Live Dashboard Analytics")
         alert_placeholder = st.empty()
@@ -137,7 +131,6 @@ def show_sensor_page():
             else:
                 st.success("Status Normal: Capacity is currently at safe, comfortable levels.")
 
-        # 3. Update Charts (Using Streamlit Native Charts to prevent duplicate ID crashes)
         live_df = get_live_sensor_data()
         increments_df = pd.DataFrame(st.session_state.get('sensor_increments', []))
 

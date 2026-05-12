@@ -489,8 +489,6 @@ def setup_new_user_credentials(username, new_password, new_question, new_answer)
     except Exception as e:
         return False
 
-# --- NEW FUNCTIONS FOR USER LOGGING ---
-
 def log_user_login(username, status="Success"):
     """
     Records the login event in the database.

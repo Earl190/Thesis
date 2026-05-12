@@ -195,7 +195,6 @@ if not filtered_data.empty:
 
 daily_data, monthly_data = prepare_aggregated_data(filtered_data)
 
-# --- PAGE RENDERING ---
 if page == "HOME":
     st.title("Predictive Insights on Church Attendance")
     st.markdown("Welcome to the church attendance monitoring system.")
@@ -218,7 +217,6 @@ if page == "HOME":
             title="Monthly Average Attendance Overview",
         )
         
-        # Plotly range slider handles zooming, thickness set to hide mini-graph
         fig_home.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
         st.plotly_chart(fig_home, width='stretch')
     else:
@@ -252,7 +250,6 @@ elif page == "Attendance Records":
             event_summary = filtered_data.groupby("event_type", as_index=False)["attendance"].mean().sort_values("attendance", ascending=False)
             fig_event = px.bar(event_summary, x="event_type", y="attendance", title="Average Attendance by Event Type")
             
-            # Plotly range slider handles zooming, thickness set to hide mini-graph
             fig_event.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
             st.plotly_chart(fig_event, width='stretch')
 
@@ -265,7 +262,6 @@ elif page == "Attendance Records":
             dow_summary = dow_summary.sort_values("day_of_week")
             fig_dow = px.bar(dow_summary, x="day_of_week", y="attendance", title="Average Attendance by Day")
             
-            # Plotly range slider handles zooming, thickness set to hide mini-graph
             fig_dow.update_xaxes(rangeslider=dict(visible=True, thickness=0.02))
             st.plotly_chart(fig_dow, width='stretch')
 

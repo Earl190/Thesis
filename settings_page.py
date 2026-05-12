@@ -139,7 +139,6 @@ def show_settings_page():
     db_col1, db_col2, db_col3 = st.columns(3)
     
     with db_col1:
-        # Invisible spacer so this button aligns with the bottom of the password input field
         st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
         if st.button("Trigger Manual Backup", use_container_width=True):
             with st.spinner("Executing SQL Server Backup..."):
@@ -161,7 +160,6 @@ def show_settings_page():
             st.toast("Live sensor cache cleared.")
 
     with db_col3:
-        # Admin password input field
         admin_password = st.text_input(
             "Admin Password:", 
             type="password", 
