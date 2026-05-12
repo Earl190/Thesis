@@ -60,14 +60,12 @@ def show_sensor_page():
                 st.success(f"Data synced directly to database! {msg}")
                 st.info("The main dashboard sidebar filters will now detect this event upon refresh.")
                 
-                # --- NEW CHANGE: Clear the data cache so main dashboards update instantly ---
                 st.cache_data.clear()
             else:
                 st.error(f"Database sync failed: {msg}")
         else:
             st.warning("No data generated yet. Run the simulation first.")
 
-    # --- LEFT COLUMN: CONTROLS ---
     with sensor_col:
         st.subheader("Sensor Controls")
         st.session_state.selected_mass_time = st.selectbox(
@@ -159,12 +157,8 @@ def show_sensor_page():
             with line_chart_placeholder.container():
                 st.info("No live sensor data yet. Click 'Start' to begin the fast-forward simulation.")
 
-
-    # --- EXECUTION ---
-    # 1. Render the static UI immediately when the page loads or pauses
     update_ui_placeholders()
 
-    # 2. Start the Live Simulation Loop if running
     if st.session_state.get("simulation_running", False):
         while st.session_state.simulation_running:
             
@@ -172,7 +166,6 @@ def show_sensor_page():
             max_cap = st.session_state.get('max_capacity', 500)
             
             if t <= 30:
-                # Math logic to simulate arrivals
                 mean = -5
                 std_dev = 15
                 expected_total = max_cap * 0.85
@@ -182,12 +175,10 @@ def show_sensor_page():
                 increment = int(expected_total * prob * noise_factor)
                 increment = max(0, increment)
                 
-                # Apply limits and add to totals
                 st.session_state.live_count = st.session_state.get('live_count', 0) + increment
                 if st.session_state.live_count > max_cap:
                     st.session_state.live_count = max_cap
 
-                # Save the new data point
                 now = datetime.now()
                 st.session_state.sensor_increments.append({"sim_time": t, "arrivals": increment})
                 st.session_state.sensor_log.append({
