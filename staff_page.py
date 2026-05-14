@@ -165,7 +165,7 @@ def show_staff_dashboard(data):
 
     with st.container(border=True):
         st.subheader("Recent Automated Sensor Logs")
-        st.caption("Data is logged automatically. Contact the System Administrator for any discrepancies.")
+        st.caption("Data is logged automatically. Contact the System Administrator for any concerns.")
         
         available_cols = filtered_data.columns.tolist()
         display_cols = [c for c in ["date", "mass_time", "event_type", "attendance", "foot_traffic_count", "capacity"] if c in available_cols]
